@@ -21,6 +21,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JI9J9A_HFT_2023241.Logic", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JI9J9A_HFT_2023241.Repository", "JI9J9A_HFT_2023241.Repository\JI9J9A_HFT_2023241.Repository.csproj", "{3ABBBF33-5BDB-4B8B-996A-D7F5688518B6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{CE5ED26A-747C-47AF-B6AD-68924A1E2EEB}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
