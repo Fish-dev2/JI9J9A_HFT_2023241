@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -15,8 +17,12 @@ namespace JI9J9A_HFT_2023241.Models
     }
     public class Owner
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OwnerId { get; set; }
+        [StringLength(240)]
         public string FirstName { get; set; }
+        [StringLength(240)]
         public string LastName { get; set; }
         public DateTime LicenceValidUntil { get; set; }
         public LicenceType LicenceType { get; set; }
