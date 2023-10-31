@@ -8,6 +8,16 @@
     <ProjectReference Include="..\JI9J9A_HFT_2023241.Logic\JI9J9A_HFT_2023241.Logic.csproj" />
     <ProjectReference Include="..\JI9J9A_HFT_2023241.Models\JI9J9A_HFT_2023241.Models.csproj" />
     <ProjectReference Include="..\JI9J9A_HFT_2023241.Repository\JI9J9A_HFT_2023241.Repository.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.14" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+
   </ItemGroup>
 
 </Project>
