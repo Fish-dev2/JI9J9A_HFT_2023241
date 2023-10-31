@@ -26,7 +26,7 @@ namespace JI9J9A_HFT_2023241.Models
         public string LastName { get; set; }
         public DateTime LicenceValidUntil { get; set; }
         public LicenceType LicenceType { get; set; }
-        public ICollection<Firearm> LicensedGuns { get; set; }
+        public virtual ICollection<Firearm> LicensedGuns { get; set; }
 
         public Owner()
         {

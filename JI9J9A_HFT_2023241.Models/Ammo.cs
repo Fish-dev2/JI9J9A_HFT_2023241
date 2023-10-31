@@ -15,12 +15,14 @@ namespace JI9J9A_HFT_2023241.Models
         public int AmmoId { get; set; }
         [StringLength(240)]
         public string Name { get; set; }
-        [Range(0,100)]
+        [Range(0, 100)]
         public double Diameter { get; set; }
-        [Range(0,200)]
+        [Range(0, 200)]
         public double Length { get; set; }
         [StringLength(50)]
         public string BulletType { get; set; }
+        public virtual ICollection <Firearm> FirearmsUsingAmmo { get; set; }
+
         public Ammo()
         {
             

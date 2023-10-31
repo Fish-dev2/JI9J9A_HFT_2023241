@@ -17,7 +17,7 @@ namespace JI9J9A_HFT_2023241.Models
         public int FireRate { get; set; }
         public DateTime ReleaseDate { get; set; }
         public int AmmoId { get; set; }
-        public Ammo AmmoType { get; set; }
+        public virtual Ammo AmmoType { get; set; }
 
         public Firearm()
         {
