@@ -1,0 +1,35 @@
+﻿using JI9J9A_HFT_2023241.Models;
+using JI9J9A_HFT_2023241.Repository.Database;
+using JI9J9A_HFT_2023241.Repository.GenericRepository;
+using JI9J9A_HFT_2023241.Repository.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace JI9J9A_HFT_2023241.Repository.ModelRepositories
+{
+    public class AmmoRepository : Repository<Ammo>, IRepository<Ammo>
+    {
+        public AmmoRepository(GunLicenceDbContext ctx) : base(ctx)
+        {
+
+        }
+
+        public override Ammo Read(int id)
+        {
+            return this.ctx.Ammunitions.First(t => t.AmmoId == id);
+        }
+
+        public override void Update(Ammo item)
+        {
+            var old = Read(item.AmmoId);
+            foreach (var prop in old.GetType().GetProperties())
+            {
+                prop.SetValue(old,prop.GetValue(item));
+            }
+            ctx.SaveChanges();
+        }
+    }
+}

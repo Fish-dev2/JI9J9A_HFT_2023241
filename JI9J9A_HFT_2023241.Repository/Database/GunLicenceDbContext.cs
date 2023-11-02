@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace JI9J9A_HFT_2023241.Repository
+namespace JI9J9A_HFT_2023241.Repository.Database
 {
     public class GunLicenceDbContext : DbContext
     {
@@ -13,7 +13,7 @@ namespace JI9J9A_HFT_2023241.Repository
 
         public GunLicenceDbContext()
         {
-            this.Database.EnsureCreated();
+            Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
@@ -28,7 +28,7 @@ namespace JI9J9A_HFT_2023241.Repository
                 .UseLazyLoadingProxies();
 
             }
-            
+
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -51,7 +51,7 @@ namespace JI9J9A_HFT_2023241.Repository
             //létrehozza a kapcsolatot hogy az Ownernek legyen Registers összekötése
             //és hogy a Registersnek Idegen kulcsa az OwnerId
             modelBuilder.Entity<Register>()
-                .HasOne( r => r.Owner)
+                .HasOne(r => r.Owner)
                 .WithMany(o => o.Registers)
                 .HasForeignKey(r => r.OwnerId)
                 .OnDelete(DeleteBehavior.Cascade);
