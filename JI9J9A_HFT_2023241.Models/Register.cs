@@ -7,7 +7,7 @@ namespace JI9J9A_HFT_2023241.Repository
     {
         public int Id { get; set; }
         
-        public int GunId { get; set; }
+        public int FirearmId { get; set; }
         public int OwnerId { get; set; }
         public DateTime RegistrationDate { get; set; }
 
@@ -21,7 +21,7 @@ namespace JI9J9A_HFT_2023241.Repository
         {
             string[] split = line.Split('#');
             Id = int.Parse(split[0]);
-            GunId = int.Parse(split[1]);
+            FirearmId = int.Parse(split[1]);
             OwnerId = int.Parse(split[2]);
             RegistrationDate = DateTime.Parse(split[3]);
 

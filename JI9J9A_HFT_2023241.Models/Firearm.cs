@@ -1,6 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Principal;
+using System.Collections.Generic;
+using JI9J9A_HFT_2023241.Repository;
 
 namespace JI9J9A_HFT_2023241.Models
 {
@@ -18,6 +21,8 @@ namespace JI9J9A_HFT_2023241.Models
         public DateTime ReleaseDate { get; set; }
         public int AmmoId { get; set; }
         public virtual Ammo AmmoType { get; set; }
+        public virtual ICollection<Owner> OwnersHavingThisGun { get; set; }
+        public virtual ICollection<Register> Registers { get; set; }
 
         public Firearm()
         {

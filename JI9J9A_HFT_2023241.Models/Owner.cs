@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JI9J9A_HFT_2023241.Repository;
 
 namespace JI9J9A_HFT_2023241.Models
 {
@@ -27,6 +28,7 @@ namespace JI9J9A_HFT_2023241.Models
         public DateTime LicenceValidUntil { get; set; }
         public LicenceType LicenceType { get; set; }
         public virtual ICollection<Firearm> LicensedGuns { get; set; }
+        public virtual ICollection<Register> Registers { get; set; }
 
         public Owner()
         {
