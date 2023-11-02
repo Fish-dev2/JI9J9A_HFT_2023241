@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JI9J9A_HFT_2023241.Repository.Database;
-using JI9J9A_HFT_2023241.Repository.Interfaces;
+using JI9J9A_HFT_2023241.Repository;
 
-namespace JI9J9A_HFT_2023241.Repository.GenericRepository
+namespace JI9J9A_HFT_2023241.Repository
 {
     public abstract class Repository<T> : IRepository<T> where T : class
     {
