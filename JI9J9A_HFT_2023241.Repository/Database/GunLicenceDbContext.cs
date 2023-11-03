@@ -131,21 +131,21 @@ namespace JI9J9A_HFT_2023241.Repository
             modelBuilder.Entity<Owner>().HasData(new Owner[]
             {
                 new Owner("1#Emma#Williams#2024.03.15.#Hunting"),
-                new Owner("2#Liam#Smith#2024.05.20.#SelfDefense"),
+                new Owner("2#Liam#Smith#2023.05.20.#SelfDefense"),
                 new Owner("3#Olivia#Johnson#2024.08.12.#Security"),
                 new Owner("4#Noah#Jones#2024.10.25.#Hunting"),
                 new Owner("5#Ava#Brown#2025.01.18.#SelfDefense"),
                 new Owner("6#James#Davis#2025.04.30.#Security"),
                 new Owner("7#Isabella#Miller#2025.07.22.#Hunting"),
-                new Owner("8#Ethan#Wilson#2025.10.10.#SelfDefense"),
+                new Owner("8#Ethan#Wilson#2022.10.10.#SelfDefense"),
                 new Owner("9#Sophia#Moore#2026.02.05.#Security"),
                 new Owner("10#Mason#Taylor#2026.05.19.#Hunting"),
                 new Owner("11#Harper#Anderson#2026.08.27.#SelfDefense"),
                 new Owner("12#Aiden#Thomas#2026.11.11.#Security"),
                 new Owner("13#Charlotte#Jackson#2027.03.08.#Hunting"),
                 new Owner("14#Elijah#White#2027.06.25.#SelfDefense"),
-                new Owner("15#Amelia#Harris#2027.09.14.#Security"),
-                new Owner("16#Logan#Martin#2027.12.30.#Hunting"),
+                new Owner("15#Amelia#Harris#2021.09.14.#Security"),
+                new Owner("16#Logan#Martin#2022.12.30.#Hunting"),
                 new Owner("17#Avery#Thompson#2028.03.22.#SelfDefense"),
                 new Owner("18#Lucas#Garcia#2028.06.11.#Security"),
                 new Owner("19#Evelyn#Martinez#2028.09.26.#Hunting"),
@@ -226,26 +226,6 @@ namespace JI9J9A_HFT_2023241.Repository
 
             });
 
-
-
-
-
-            /*
-             1#MP5#Heckler&Koch#800#2000.01.01#1
-2#UZI#Heckler&Koch#800#2000.01.01#1
-3#AK47#USSR#800#2000.01.01#2
-4#AK63D#USSR#800#2000.01.01#2
-
-1#9MM#9#5#HollowPoint
-2#762#9#5#FullMetalJacket
-            1#Bálint#Füzi#2024.01.01.#SelfDefense
-                2#Cintia#Kincses#2023.12.31.#Hunting
-
-            1#1#1#2022.01.01
-2#1#1#2020.01.01
-2#1#2#2020.01.01
-2#1#2#2020.01.01
-             */
         }
 
     }

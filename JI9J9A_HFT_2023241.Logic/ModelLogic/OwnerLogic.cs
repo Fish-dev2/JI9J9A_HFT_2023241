@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace JI9J9A_HFT_2023241.Logic
 {
-    internal class OwnerLogic : IOwnerLogic
+    public class OwnerLogic : IOwnerLogic
     {
         IRepository<Owner> repository;
 

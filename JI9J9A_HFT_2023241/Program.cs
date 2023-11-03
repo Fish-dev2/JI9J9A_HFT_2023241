@@ -1,6 +1,8 @@
-﻿using JI9J9A_HFT_2023241.Repository.Database;
+﻿using JI9J9A_HFT_2023241.Repository;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System;
+using JI9J9A_HFT_2023241.Logic;
+using JI9J9A_HFT_2023241.Models;
 
 namespace JI9J9A_HFT_2023241
 {
@@ -8,38 +10,32 @@ namespace JI9J9A_HFT_2023241
     {
         static void Main(string[] args)
         {
+
+
             GunLicenceDbContext db = new GunLicenceDbContext();
+            AmmoLogic al = new AmmoLogic(new AmmoRepository(db));
+            FirearmLogic fl = new FirearmLogic(new FirearmRepository(db));
+            OwnerLogic ol = new OwnerLogic(new OwnerRepository(db));
+            RegisterLogic rl = new RegisterLogic(new RegisterRepository(db));
 
-            foreach (var item in db.Ammunitions)
-            {
-                Console.WriteLine(item.Name + ":");
-                foreach (var gun in item.FirearmsUsingAmmo)
-                {
-                    Console.WriteLine("\t"+gun.Name);
-                }
-            }
+            var result = al.Top3MostUsedAmmoTypes();
+            var result2 = ol.ExpiredLicences();
+            var result3 = ol.AmountOfEachLicenceGivenOut();
+            var result4 = ol.AverageAmountOfGuns();
 
-            //SELECT * FROM Ammunitions
-            //INNER JOIN Firearms ON Firearms.AmmoId = Ammo.AmmoId
-            //
-
-            foreach (var item in db.Owners)
-            {
-                Console.WriteLine(item.FirstName + " " + item.LastName);
-                foreach (var gun in item.LicensedGuns)
-                {
-                    Console.WriteLine("\t"+gun.Name);
-                }
-            }
-
-            foreach (var item in db.Firearms)
+            foreach ( var item in result)
             {
                 Console.WriteLine(item.Name);
-                foreach (var owner in item.OwnersHavingThisGun)
-                {
-                    Console.WriteLine("\t" +owner.FirstName + " "+ owner.LastName);
-                }
             }
+            foreach (var item in result2)
+            {
+                Console.WriteLine(item.FirstName +" "+ item.LastName);
+            }
+            foreach( var item in result3)
+            {
+                Console.WriteLine(item.LicenceType.ToString() +""+ item.Count);
+            }
+            Console.WriteLine("Átlagos fegyver darabszám: "+ result4);
 
 
             Console.ReadLine();

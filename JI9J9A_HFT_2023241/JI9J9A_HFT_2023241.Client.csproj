@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JI9J9A_HFT_2023241.Logic\JI9J9A_HFT_2023241.Logic.csproj" />
     <ProjectReference Include="..\JI9J9A_HFT_2023241.Models\JI9J9A_HFT_2023241.Models.csproj" />
     <ProjectReference Include="..\JI9J9A_HFT_2023241.Repository\JI9J9A_HFT_2023241.Repository.csproj" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.14" />

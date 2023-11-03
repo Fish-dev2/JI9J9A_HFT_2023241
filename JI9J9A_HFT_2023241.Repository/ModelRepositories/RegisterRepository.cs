@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JI9J9A_HFT_2023241.Repository
 {
-    internal class RegisterRepository : Repository<Register>, IRepository<Register>
+    public class RegisterRepository : Repository<Register>, IRepository<Register>
     {
         public RegisterRepository(GunLicenceDbContext ctx) : base(ctx)
         {

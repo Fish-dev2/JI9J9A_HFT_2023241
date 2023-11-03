@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JI9J9A_HFT_2023241.Repository
 {
-    internal class FirearmRepository : Repository<Firearm>, IRepository<Firearm>
+    public class FirearmRepository : Repository<Firearm>, IRepository<Firearm>
     {
         public FirearmRepository(GunLicenceDbContext ctx) : base(ctx)
         {

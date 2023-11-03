@@ -32,8 +32,8 @@ namespace JI9J9A_HFT_2023241.Models
             string[] split = line.Split('#');
             AmmoId = int.Parse(split[0]);
             Name = split[1];
-            Diameter = double.Parse(split[2]);
-            Length = double.Parse(split[3]);
+            Diameter = double.Parse(split[2].Replace('.',','));
+            Length = double.Parse(split[3].Replace('.', ','));
             BulletType = split[4];
         }
     }

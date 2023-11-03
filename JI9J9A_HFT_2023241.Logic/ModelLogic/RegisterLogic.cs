@@ -9,9 +9,15 @@ using System.Threading.Tasks;
 
 namespace JI9J9A_HFT_2023241.Logic
 {
-    internal class RegisterLogic
+    public class RegisterLogic
     {
         IRepository<Register> repository;
+
+        public RegisterLogic(IRepository<Register> repository)
+        {
+            this.repository = repository;
+        }
+
         public void Create(Register item)
         {
             //attribute ellenőrzés

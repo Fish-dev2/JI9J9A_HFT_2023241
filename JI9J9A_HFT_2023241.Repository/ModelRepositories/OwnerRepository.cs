@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JI9J9A_HFT_2023241.Repository
 {
-    internal class OwnerRepository : Repository<Owner>, IRepository<Owner>
+    public class OwnerRepository : Repository<Owner>, IRepository<Owner>
     {
         public OwnerRepository(GunLicenceDbContext ctx) : base(ctx)
         {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace JI9J9A_HFT_2023241.Logic
 {
-    internal class AmmoLogic : IAmmoLogic
+    public class AmmoLogic : IAmmoLogic
     {
         IRepository<Ammo> repository;
 
@@ -51,10 +51,10 @@ namespace JI9J9A_HFT_2023241.Logic
             this.repository.Update(item);
         }
 
-        public IEnumerable<Ammo> Top3MostUsedAmmoTypes ()
+        public IEnumerable<Ammo> Top3MostUsedAmmoTypes()
         {
             var result = (from x in this.repository.ReadAll()
-                         orderby x.FirearmsUsingAmmo.Count
+                         orderby x.FirearmsUsingAmmo.Count descending
                          select x).Take(3);
             return result;
         }

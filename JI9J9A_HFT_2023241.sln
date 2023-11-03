@@ -8,9 +8,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{D94AB075-D9A6-4C9C-9BEE-48BE24F3D5B7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{EEC86D6D-A5E7-4604-8FC2-9D2E9678329C}"
-	ProjectSection(SolutionItems) = preProject
-		JI9J9A_HFT_2023241.Models\Firearm.cs = JI9J9A_HFT_2023241.Models\Firearm.cs
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{612B6A1D-8A75-41CD-88AA-D047B0DB3F00}"
 EndProject
