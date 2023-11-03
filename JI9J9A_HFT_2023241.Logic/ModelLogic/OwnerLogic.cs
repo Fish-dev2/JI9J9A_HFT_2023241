@@ -61,7 +61,6 @@ namespace JI9J9A_HFT_2023241.Logic
                          select x;
 
             return result;
-
         }
         public double AverageAmountOfGuns()
         {

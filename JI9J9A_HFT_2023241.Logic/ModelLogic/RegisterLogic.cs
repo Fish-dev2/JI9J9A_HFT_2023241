@@ -45,5 +45,6 @@ namespace JI9J9A_HFT_2023241.Logic
         {
             this.repository.Update(item);
         }
+
     }
 }

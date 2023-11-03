@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Principal;
 using System.Collections.Generic;
-using JI9J9A_HFT_2023241.Repository;
 
 namespace JI9J9A_HFT_2023241.Models
 {

@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JI9J9A_HFT_2023241.Repository;
+using JI9J9A_HFT_2023241;
 
 namespace JI9J9A_HFT_2023241.Models
 {

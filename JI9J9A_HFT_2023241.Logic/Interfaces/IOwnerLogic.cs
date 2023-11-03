@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JI9J9A_HFT_2023241.Logic.Interfaces
+namespace JI9J9A_HFT_2023241.Logic
 {
     public interface IOwnerLogic
     {
