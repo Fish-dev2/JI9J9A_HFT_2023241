@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace JI9J9A_HFT_2023241.Logic
 {
     public class FirearmLogic
@@ -50,6 +51,14 @@ namespace JI9J9A_HFT_2023241.Logic
         public void Update(Firearm item)
         {
             this.repository.Update(item);
+        }
+        public IEnumerable<Firearm> FirearmsUsingSpecifiedAmmo(Ammo ammo)
+        {
+            var result = from x in this.repository.ReadAll()
+                         where x.AmmoId == ammo.AmmoId
+                         select x;
+
+            return result;
         }
     }
 }

@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System;
 using JI9J9A_HFT_2023241.Logic;
 using JI9J9A_HFT_2023241.Models;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace JI9J9A_HFT_2023241
 {
@@ -22,6 +24,7 @@ namespace JI9J9A_HFT_2023241
             var result2 = ol.ExpiredLicences();
             var result3 = ol.AmountOfEachLicenceGivenOut();
             var result4 = ol.AverageAmountOfGuns();
+            var result5 = rl.FirearmsAndLicenceTypes();
 
             foreach ( var item in result)
             {
@@ -36,6 +39,20 @@ namespace JI9J9A_HFT_2023241
                 Console.WriteLine(item.LicenceType.ToString() +""+ item.Count);
             }
             Console.WriteLine("Átlagos fegyver darabszám: "+ result4);
+
+
+            foreach (var item in result5)
+            {
+                string name = (string)item.GetType().GetProperty("FirearmName").GetValue(item);
+
+                IEnumerable<object> counts = (IEnumerable<object>)name.GetType().GetProperty("LicenceTypeCounts").GetValue(item);
+                foreach (var count in counts)
+                {
+                    Console.WriteLine((string)counts.GetType().GetProperty("LicenceType").GetValue(count) + "\n"+
+                        (string)counts.GetType().GetProperty("Count").GetValue(count));
+                }
+                
+            }
 
 
             Console.ReadLine();
