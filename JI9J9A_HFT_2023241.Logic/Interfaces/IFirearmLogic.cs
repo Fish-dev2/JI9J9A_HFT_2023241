@@ -14,5 +14,6 @@ namespace JI9J9A_HFT_2023241.Logic
         Firearm Read(int id);
         IEnumerable<Firearm> ReadAll();
         void Update(Firearm item);
+        IEnumerable<Firearm> FirearmsUsingSpecifiedAmmo(Ammo ammo);
     }
 }

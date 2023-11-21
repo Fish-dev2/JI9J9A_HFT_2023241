@@ -41,16 +41,21 @@ namespace JI9J9A_HFT_2023241
             Console.WriteLine("Átlagos fegyver darabszám: "+ result4);
 
 
+            //foreach (var item in result5)
+            //{
+            //    string name = (string)item.GetType().GetProperty("FirearmName").GetValue(item);
+
+            //    IEnumerable<object> counts = (IEnumerable<object>)item.GetType().GetProperty("LicenceTypeCounts").GetValue(item);
+            //    Console.WriteLine(name);
+            //    foreach (var count in counts)
+            //    {
+            //        Console.WriteLine("\t"+count.GetType().GetProperty("LicenceType").GetValue(count) + ": "+
+            //            (int)count.GetType().GetProperty("Count").GetValue(count));
+            //    }
+                
+            //}
             foreach (var item in result5)
             {
-                string name = (string)item.GetType().GetProperty("FirearmName").GetValue(item);
-
-                IEnumerable<object> counts = (IEnumerable<object>)name.GetType().GetProperty("LicenceTypeCounts").GetValue(item);
-                foreach (var count in counts)
-                {
-                    Console.WriteLine((string)counts.GetType().GetProperty("LicenceType").GetValue(count) + "\n"+
-                        (string)counts.GetType().GetProperty("Count").GetValue(count));
-                }
                 
             }
 

@@ -66,8 +66,36 @@ namespace JI9J9A_HFT_2023241.Logic
                              })
 
                           });
-            return result;
+
+
+            var result2 = (from x in this.repository.ReadAll().AsEnumerable()
+                          group x by x.Firearm.Name into grouped
+                          select new LicenceStat
+                          {
+                              Firearm = grouped.Key,
+                              licenceCounts = grouped.GroupBy(f => f.Owner.LicenceType)
+                             .Select(tg => new LicenceCount
+                             {
+                                 Type = tg.Key,
+                                 Count = tg.Count()
+                             })
+
+                          });
+            return result2;
         }
+        public class LicenceStat
+        {
+            public string Firearm { get; set; }
+            public IEnumerable<LicenceCount> licenceCounts { get; set; }
+
+
+        }
+        public class LicenceCount
+        {
+            public int Count { get; set; }
+            public LicenceType Type { get; set; }
+        }
+
 
     }
 }

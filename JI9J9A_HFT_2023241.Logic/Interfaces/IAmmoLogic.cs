@@ -14,5 +14,6 @@ namespace JI9J9A_HFT_2023241.Logic
         Ammo Read(int id);
         IEnumerable<Ammo> ReadAll();
         void Update(Ammo item);
+        IEnumerable<Ammo> Top3MostUsedAmmoTypes();
     }
 }
