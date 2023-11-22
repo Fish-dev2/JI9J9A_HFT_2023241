@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace JI9J9A_HFT_2023241.Models
@@ -21,6 +22,7 @@ namespace JI9J9A_HFT_2023241.Models
         public double Length { get; set; }
         [StringLength(50)]
         public string BulletType { get; set; }
+        [JsonIgnore]
         public virtual ICollection <Firearm> FirearmsUsingAmmo { get; set; }
 
         public Ammo()

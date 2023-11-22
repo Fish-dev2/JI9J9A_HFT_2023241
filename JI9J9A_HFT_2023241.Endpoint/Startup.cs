@@ -28,6 +28,8 @@ namespace JI9J9A_HFT_2023241.Endpoint
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<GunLicenceDbContext>();
+
             services.AddTransient<IRepository<Owner>, OwnerRepository>();
             services.AddTransient<IRepository<Register>, RegisterRepository>();
             services.AddTransient<IRepository<Firearm>, FirearmRepository>();

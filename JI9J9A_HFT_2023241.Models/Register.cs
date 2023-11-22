@@ -1,5 +1,6 @@
 ﻿using JI9J9A_HFT_2023241.Models;
 using System;
+using System.Text.Json.Serialization;
 
 namespace JI9J9A_HFT_2023241.Models
 {
@@ -12,6 +13,7 @@ namespace JI9J9A_HFT_2023241.Models
         public DateTime RegistrationDate { get; set; }
 
         public virtual Firearm Firearm { get; set; }
+        [JsonIgnore]
         public virtual Owner Owner { get; set; }
         public Register()
         {
