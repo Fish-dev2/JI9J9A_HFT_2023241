@@ -15,7 +15,7 @@ namespace JI9J9A_HFT_2023241.Logic
         Owner Read(int id);
         IEnumerable<Owner> ReadAll();
         void Update(Owner item);
-        IEnumerable<Owner> ExpiredLicences();
+        int ExpiredLicences();
         double AverageAmountOfGuns();
         IEnumerable<LicenceInfo> AmountOfEachLicenceGivenOut();
     }

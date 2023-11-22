@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JI9J9A_HFT_2023241.Logic
 {
-    public class RegisterLogic
+    public class RegisterLogic : IRegisterLogic
     {
         IRepository<Register> repository;
 

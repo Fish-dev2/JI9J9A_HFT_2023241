@@ -54,13 +54,13 @@ namespace JI9J9A_HFT_2023241.Logic
             this.repository.Update(item);
         }
 
-        public IEnumerable<Owner> ExpiredLicences()
+        public int ExpiredLicences()
         {
             var result = from x in this.repository.ReadAll()
                          where x.LicenceValidUntil < DateTime.Now
                          select x;
 
-            return result;
+            return result.Count();
         }
         public double AverageAmountOfGuns()
         {
@@ -81,6 +81,19 @@ namespace JI9J9A_HFT_2023241.Logic
         {
             public LicenceType LicenceType { get; set; }
             public int Count { get; set; }
+            public override bool Equals(object obj)
+            {
+                LicenceInfo b = obj as LicenceInfo;
+                if (b== null)
+                {
+                    return false;
+                }
+                return b.LicenceType == this.LicenceType && b.Count == this.Count;  
+            }
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(this.LicenceType, this.Count);
+            }
         }
     }
 }

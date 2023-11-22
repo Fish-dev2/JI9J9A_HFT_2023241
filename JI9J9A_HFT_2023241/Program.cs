@@ -30,11 +30,12 @@ namespace JI9J9A_HFT_2023241
             {
                 Console.WriteLine(item.Name);
             }
-            foreach (var item in result2)
-            {
-                Console.WriteLine(item.FirstName +" "+ item.LastName);
-            }
-            foreach( var item in result3)
+            //foreach (var item in result2)
+            //{
+            //    Console.WriteLine(item.FirstName +" "+ item.LastName);
+            //}
+            Console.WriteLine(result2);
+            foreach ( var item in result3)
             {
                 Console.WriteLine(item.LicenceType.ToString() +""+ item.Count);
             }
