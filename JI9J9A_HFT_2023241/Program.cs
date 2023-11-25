@@ -25,16 +25,16 @@ namespace JI9J9A_HFT_2023241
             var result3 = ol.AmountOfEachLicenceGivenOut();
             var result4 = ol.AverageAmountOfGuns();
             var result5 = rl.FirearmsAndLicenceTypes();
-
+            Console.WriteLine("Top3Ammo:");
             foreach ( var item in result)
             {
                 Console.WriteLine(item.Name);
             }
-            //foreach (var item in result2)
-            //{
-            //    Console.WriteLine(item.FirstName +" "+ item.LastName);
-            //}
-            Console.WriteLine(result2);
+            Console.WriteLine("Expired:");
+            foreach (var item in result2)
+            {
+                Console.WriteLine(item.FirstName + " " + item.LastName);
+            }
             foreach ( var item in result3)
             {
                 Console.WriteLine(item.LicenceType.ToString() +""+ item.Count);
@@ -42,19 +42,6 @@ namespace JI9J9A_HFT_2023241
             Console.WriteLine("Átlagos fegyver darabszám: "+ result4);
 
 
-            //foreach (var item in result5)
-            //{
-            //    string name = (string)item.GetType().GetProperty("FirearmName").GetValue(item);
-
-            //    IEnumerable<object> counts = (IEnumerable<object>)item.GetType().GetProperty("LicenceTypeCounts").GetValue(item);
-            //    Console.WriteLine(name);
-            //    foreach (var count in counts)
-            //    {
-            //        Console.WriteLine("\t"+count.GetType().GetProperty("LicenceType").GetValue(count) + ": "+
-            //            (int)count.GetType().GetProperty("Count").GetValue(count));
-            //    }
-                
-            //}
             foreach (var item in result5)
             {
                 Console.WriteLine(item.Firearm);

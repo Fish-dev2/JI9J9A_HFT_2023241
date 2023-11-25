@@ -48,9 +48,13 @@ namespace JI9J9A_HFT_2023241.Test
         [Test]
         public void ExpiredLicencesTest()
         {
-            int result = logic.ExpiredLicences();
-
-            Assert.That(result, Is.EqualTo(2));
+            IEnumerable<Owner> result = logic.ExpiredLicences();
+            List<Owner> expected = new List<Owner>()
+            {
+                new Owner("2#Liam#Smith#2023.05.20.#SelfDefense"),
+                new Owner("4#Noah#Jones#2020.10.25.#Hunting"),
+            };
+            Assert.AreEqual(result, expected);
         }
         [Test]
         public void AmountOfEachLicenceGivenOutTest()

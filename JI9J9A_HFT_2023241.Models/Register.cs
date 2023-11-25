@@ -29,5 +29,18 @@ namespace JI9J9A_HFT_2023241.Models
 
         }
 
+        public override bool Equals(object obj)
+        {
+            Register r = obj as Register;
+            if (obj == null)
+            {
+                return false;
+            }
+            return r.Id == this.Id && r.FirearmId == this.Id && r.OwnerId == this.OwnerId && r.RegistrationDate == this.RegistrationDate;
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, FirearmId, OwnerId, RegistrationDate);
+        }
     }
 }

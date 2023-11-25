@@ -54,13 +54,13 @@ namespace JI9J9A_HFT_2023241.Logic
             this.repository.Update(item);
         }
 
-        public int ExpiredLicences()
+        public IEnumerable<Owner> ExpiredLicences()
         {
             var result = from x in this.repository.ReadAll()
                          where x.LicenceValidUntil < DateTime.Now
                          select x;
 
-            return result.Count();
+            return result;
         }
         public double AverageAmountOfGuns()
         {
