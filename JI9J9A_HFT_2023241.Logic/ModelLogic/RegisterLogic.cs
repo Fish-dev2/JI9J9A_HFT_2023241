@@ -98,7 +98,7 @@ namespace JI9J9A_HFT_2023241.Logic
                 {
                     return false;
                 }
-                return ls.Firearm == this.Firearm && ls.licenceCounts.Equals(this.licenceCounts);
+                return ls.Firearm == this.Firearm && ls.licenceCounts.SequenceEqual(this.licenceCounts);
             }
             public override int GetHashCode()
             {
