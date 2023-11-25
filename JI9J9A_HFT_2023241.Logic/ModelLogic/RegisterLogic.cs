@@ -76,7 +76,35 @@ namespace JI9J9A_HFT_2023241.Logic
             {
                 public int Count { get; set; }
                 public LicenceType Type { get; set; }
+                public override bool Equals(object obj)
+                {
+                    LicenceCount lc = obj as LicenceCount;
+                    if (lc == null)
+                    {
+                        return false;
+                    }
+                    return this.Count == lc.Count && this.Type == lc.Type;
+                }
+                public override int GetHashCode()
+                {
+                    return HashCode.Combine(Count, Type);
+                }
             }
+
+            public override bool Equals(object obj)
+            {
+                LicenceStat ls = obj as LicenceStat;
+                if (ls == null)
+                {
+                    return false;
+                }
+                return ls.Firearm == this.Firearm && ls.licenceCounts.Equals(this.licenceCounts);
+            }
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(Firearm, licenceCounts);
+            }
+
 
         }
 
