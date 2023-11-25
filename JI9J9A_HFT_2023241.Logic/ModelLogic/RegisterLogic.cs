@@ -51,30 +51,15 @@ namespace JI9J9A_HFT_2023241.Logic
         {
             this.repository.Update(item);
         }
-        public IEnumerable<object> FirearmsAndLicenceTypes()
+        public IEnumerable<LicenceStat> FirearmsAndLicenceTypes()
         {
-            var result = (from x in this.repository.ReadAll().AsEnumerable()
-                          group x by x.Firearm.Name into grouped
-                          select new
-                          {
-                              FirearmName = grouped.Key,
-                              LicenceTypeCounts = grouped.GroupBy(f => f.Owner.LicenceType)
-                             .Select(tg => new
-                             {
-                                 LicenceType = tg.Key,
-                                 Count = tg.Count()
-                             })
-
-                          });
-
-
             var result2 = (from x in this.repository.ReadAll().AsEnumerable()
                           group x by x.Firearm.Name into grouped
                           select new LicenceStat
                           {
                               Firearm = grouped.Key,
                               licenceCounts = grouped.GroupBy(f => f.Owner.LicenceType)
-                             .Select(tg => new LicenceCount
+                             .Select(tg => new LicenceStat.LicenceCount
                              {
                                  Type = tg.Key,
                                  Count = tg.Count()
@@ -87,14 +72,14 @@ namespace JI9J9A_HFT_2023241.Logic
         {
             public string Firearm { get; set; }
             public IEnumerable<LicenceCount> licenceCounts { get; set; }
-
+            public class LicenceCount
+            {
+                public int Count { get; set; }
+                public LicenceType Type { get; set; }
+            }
 
         }
-        public class LicenceCount
-        {
-            public int Count { get; set; }
-            public LicenceType Type { get; set; }
-        }
+
 
 
     }

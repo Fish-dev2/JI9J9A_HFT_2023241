@@ -57,7 +57,11 @@ namespace JI9J9A_HFT_2023241
             //}
             foreach (var item in result5)
             {
-                
+                Console.WriteLine(item.Firearm);
+                foreach (var count in item.licenceCounts)
+                {
+                    Console.WriteLine("\t"+count.Type + ": " + count.Count);
+                }
             }
 
 
