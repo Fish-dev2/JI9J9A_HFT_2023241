@@ -42,6 +42,18 @@ namespace JI9J9A_HFT_2023241.Models
             AmmoId = int.Parse(split[5]);
 
         }
-
+        public override bool Equals(object obj)
+        {
+            Firearm f = obj as Firearm;
+            if (f == null)
+            {
+                return false;
+            }
+            return f.Name == this.Name && f.Manufacturer == this.Manufacturer && f.FireRate == this.FireRate && f.ReleaseDate == this.ReleaseDate && f.AmmoType.Equals(this.AmmoType);
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Name,Manufacturer,FireRate,ReleaseDate,AmmoType);
+        }
     }
 }

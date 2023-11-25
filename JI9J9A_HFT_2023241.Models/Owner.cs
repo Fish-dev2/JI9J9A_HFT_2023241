@@ -46,6 +46,19 @@ namespace JI9J9A_HFT_2023241.Models
             LicenceValidUntil = DateTime.Parse(split[3]);
             LicenceType =(LicenceType)Enum.Parse(typeof(LicenceType), split[4]);
         }
+        public override bool Equals(object obj)
+        {
+            Owner o = obj as Owner;
+            if (o == null)
+            {
+                return false;
+            }
+            return o.FirstName == this.FirstName && o.LastName == this.LastName && o.LicenceValidUntil == this.LicenceValidUntil && o.LicenceType == this.LicenceType;
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(FirstName, LastName, LicenceValidUntil, LicenceType);
+        }
 
     }
 }

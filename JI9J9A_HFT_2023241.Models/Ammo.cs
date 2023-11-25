@@ -38,5 +38,18 @@ namespace JI9J9A_HFT_2023241.Models
             Length = double.Parse(split[3].Replace('.', ','));
             BulletType = split[4];
         }
+        public override bool Equals(object obj)
+        {
+            Ammo a = obj as Ammo;
+            if (a == null)
+            {
+                return false;
+            }
+            return a.Name == this.Name && a.Diameter == this.Diameter && a.Length == this.Length && a.BulletType == this.BulletType;
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Name, Diameter, Length, BulletType);
+        }
     }
 }

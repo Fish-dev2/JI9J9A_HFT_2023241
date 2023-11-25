@@ -36,11 +36,11 @@ namespace JI9J9A_HFT_2023241.Models
             {
                 return false;
             }
-            return r.Id == this.Id && r.FirearmId == this.Id && r.OwnerId == this.OwnerId && r.RegistrationDate == this.RegistrationDate;
+            return r.FirearmId == this.Id && r.OwnerId == this.OwnerId && r.RegistrationDate == this.RegistrationDate;
         }
         public override int GetHashCode()
         {
-            return HashCode.Combine(Id, FirearmId, OwnerId, RegistrationDate);
+            return HashCode.Combine(FirearmId, OwnerId, RegistrationDate);
         }
     }
 }
