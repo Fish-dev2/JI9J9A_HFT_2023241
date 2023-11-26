@@ -20,15 +20,16 @@ namespace JI9J9A_HFT_2023241.Logic
 
         public void Create(Register item)
         {
-            //attribute ellenőrzés
+            if (item.RegistrationDate > DateTime.Now)
+            {
+                throw new ArgumentException("Registration date cannot be in the future.");
+            }
             this.repository.Create(item);
         }
 
         public void Delete(int id)
         {
-            //id ellenőrzés
             this.repository.Delete(id);
-
         }
 
         public Register Read(int id)

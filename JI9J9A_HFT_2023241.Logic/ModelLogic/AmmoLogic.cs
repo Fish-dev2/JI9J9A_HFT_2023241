@@ -19,13 +19,15 @@ namespace JI9J9A_HFT_2023241.Logic
 
         public void Create(Ammo item)
         {
-            //attribute ellenőrzés
+            if (item.Diameter <=0 || item.Length <= 0)
+            {
+                throw new ArgumentException("Size values cannot be less than or equal to 0.");
+            }
             this.repository.Create(item);
         }
 
         public void Delete(int id)
         {
-            //id ellenőrzés
             this.repository.Delete(id);
 
         }

@@ -21,13 +21,19 @@ namespace JI9J9A_HFT_2023241.Logic
 
         public void Create(Firearm item)
         {
-            //attribute ellenőrzés
+            if (item.AmmoId < 0)
+            {
+                throw new ArgumentException("AmmoId cannot be less than 0.");
+            }
+            else if (item.FireRate <= 0) 
+            {
+                throw new ArgumentException("Fire rate cannot be less than or equal to 0.");
+            }
             this.repository.Create(item);
         }
 
         public void Delete(int id)
         {
-            //id ellenőrzés
             this.repository.Delete(id);
 
         }

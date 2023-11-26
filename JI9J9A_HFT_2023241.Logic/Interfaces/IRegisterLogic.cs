@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static JI9J9A_HFT_2023241.Logic.RegisterLogic;
 
 namespace JI9J9A_HFT_2023241.Logic
 {
@@ -14,5 +15,6 @@ namespace JI9J9A_HFT_2023241.Logic
         Register Read(int id);
         IEnumerable<Register> ReadAll();
         void Update(Register item);
+        public IEnumerable<LicenceStat> FirearmsAndLicenceTypes();
     }
 }

@@ -17,7 +17,7 @@ namespace JI9J9A_HFT_2023241.Repository
 
         public override Firearm Read(int id)
         {
-            return this.ctx.Firearms.First(t => t.AmmoId == id);
+            return this.ctx.Firearms.First(t => t.GunId == id);
         }
 
         public override void Update(Firearm item)
@@ -25,7 +25,10 @@ namespace JI9J9A_HFT_2023241.Repository
             var old = Read(item.GunId);
             foreach (var prop in old.GetType().GetProperties())
             {
-                prop.SetValue(old, prop.GetValue(item));
+                if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                {
+                    prop.SetValue(old, prop.GetValue(item));
+                }
             }
             ctx.SaveChanges();
         }

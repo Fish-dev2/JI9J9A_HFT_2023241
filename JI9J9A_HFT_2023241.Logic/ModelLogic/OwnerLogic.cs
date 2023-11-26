@@ -22,13 +22,15 @@ namespace JI9J9A_HFT_2023241.Logic
 
         public void Create(Owner item)
         {
-            //attribute ellenőrzés
+            if (item.FirstName.Length < 3 || item.LastName.Length < 3)
+            {
+                throw new ArgumentException("Name cannot be shorter than 3 characters.");
+            }
             this.repository.Create(item);
         }
 
         public void Delete(int id)
         {
-            //id ellenőrzés
             this.repository.Delete(id);
 
         }
