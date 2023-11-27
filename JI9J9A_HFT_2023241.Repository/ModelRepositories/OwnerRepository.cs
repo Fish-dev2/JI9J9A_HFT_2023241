@@ -16,7 +16,7 @@ namespace JI9J9A_HFT_2023241.Repository
 
         public override Owner Read(int id)
         {
-            return this.ctx.Owners.First(t => t.OwnerId == id);
+            return this.ctx.Owners.FirstOrDefault(t => t.OwnerId == id);
         }
 
         public override void Update(Owner item)

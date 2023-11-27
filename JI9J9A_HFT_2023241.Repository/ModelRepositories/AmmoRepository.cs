@@ -17,7 +17,7 @@ namespace JI9J9A_HFT_2023241.Repository
 
         public override Ammo Read(int id)
         {
-            return this.ctx.Ammunitions.First(t => t.AmmoId == id);
+            return this.ctx.Ammunitions.FirstOrDefault(t => t.AmmoId == id);
         }
 
         public override void Update(Ammo item)

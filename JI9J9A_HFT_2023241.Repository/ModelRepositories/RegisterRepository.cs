@@ -16,7 +16,7 @@ namespace JI9J9A_HFT_2023241.Repository
 
         public override Register Read(int id)
         {
-            return this.ctx.Registers.First(t => t.Id == id);
+            return this.ctx.Registers.FirstOrDefault(t => t.Id == id);
         }
 
         public override void Update(Register item)

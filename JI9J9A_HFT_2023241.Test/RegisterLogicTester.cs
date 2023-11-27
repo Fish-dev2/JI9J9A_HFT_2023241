@@ -35,7 +35,7 @@ namespace JI9J9A_HFT_2023241.Test
                 },
 
             };
-            
+
             mockRegisterRepo.Setup(m => m.ReadAll()).Returns(list.AsQueryable());
             mockRegisterRepo.Setup(m => m.Read(It.IsAny<int>()))
                 .Returns((int id) => list.FirstOrDefault(register => register.Id == id));
@@ -49,7 +49,11 @@ namespace JI9J9A_HFT_2023241.Test
                         list.Remove(itemToRemove);
                     }
                 });
-
+            mockRegisterRepo.Setup(m => m.Create(It.IsAny<Register>()))
+                .Callback<Register>(item =>
+                {
+                    list.Add(item);
+                });
 
 
         }
@@ -91,6 +95,14 @@ namespace JI9J9A_HFT_2023241.Test
             //mockRegisterRepo.Verify(m => m.Delete(a), Times.Once);
             var result = logic.ReadAll().FirstOrDefault(register => register.Id == a);
             Assert.AreEqual(result, null);
+        }
+        [Test]
+        public void ArgumentExceptionTest()
+        {
+            var futureDate = DateTime.Now.AddMonths(1);
+            var registerWithFutureDate = new Register("1#1#1#" + futureDate.ToString("yyyy.MM.dd"));
+
+            Assert.Throws<ArgumentException>(() => logic.Create(registerWithFutureDate));
         }
     }
 }

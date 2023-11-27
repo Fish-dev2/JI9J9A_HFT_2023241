@@ -17,7 +17,7 @@ namespace JI9J9A_HFT_2023241.Repository
 
         public override Firearm Read(int id)
         {
-            return this.ctx.Firearms.First(t => t.GunId == id);
+            return this.ctx.Firearms.FirstOrDefault(t => t.GunId == id);
         }
 
         public override void Update(Firearm item)
