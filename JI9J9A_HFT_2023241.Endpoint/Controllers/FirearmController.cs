@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace JI9J9A_HFT_2023241.Endpoint.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class FirearmController : ControllerBase
     {
@@ -40,8 +40,8 @@ namespace JI9J9A_HFT_2023241.Endpoint.Controllers
         }
 
         // PUT api/<FirearmController>/5
-        [HttpPut("{id}")]
-        public void Update(int id, [FromBody] Firearm value)
+        [HttpPut]
+        public void Update([FromBody] Firearm value)
         {
             this.logic.Update(value);
         }

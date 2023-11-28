@@ -29,7 +29,7 @@ namespace JI9J9A_HFT_2023241.Models
         {
             FirearmsUsingAmmo = new HashSet<Firearm>();
         }
-        public Ammo(string line):base()
+        public Ammo(string line):this()
         {
             string[] split = line.Split('#');
             AmmoId = int.Parse(split[0]);

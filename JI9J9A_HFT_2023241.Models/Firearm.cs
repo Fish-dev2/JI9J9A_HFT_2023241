@@ -28,9 +28,10 @@ namespace JI9J9A_HFT_2023241.Models
 
         public Firearm()
         {
-            
+            OwnersHavingThisGun = new HashSet<Owner>();
+            Registers = new HashSet<Register>();
         }
-        public Firearm(string line)
+        public Firearm(string line):this()
         {
             string[] split = line.Split('#');
 

@@ -30,14 +30,15 @@ namespace JI9J9A_HFT_2023241.Models
         public LicenceType LicenceType { get; set; }
         [JsonIgnore]
         public virtual ICollection<Firearm> LicensedGuns { get; set; }
-        
+
         public virtual ICollection<Register> Registers { get; set; }
 
         public Owner()
         {
-            
+            LicensedGuns = new HashSet<Firearm>();
+            Registers = new HashSet<Register>();
         }
-        public Owner(string line)
+        public Owner(string line) : this()
         {
             string[] split = line.Split('#');
             OwnerId = int.Parse(split[0]);
