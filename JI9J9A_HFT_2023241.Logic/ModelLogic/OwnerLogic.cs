@@ -79,24 +79,7 @@ namespace JI9J9A_HFT_2023241.Logic
             return result;
         }
 
-        public class LicenceInfo
-        {
-            public LicenceType LicenceType { get; set; }
-            public int Count { get; set; }
-            public override bool Equals(object obj)
-            {
-                LicenceInfo b = obj as LicenceInfo;
-                if (b== null)
-                {
-                    return false;
-                }
-                return b.LicenceType == this.LicenceType && b.Count == this.Count;  
-            }
-            public override int GetHashCode()
-            {
-                return HashCode.Combine(this.LicenceType, this.Count);
-            }
-        }
+
 
     }
 }

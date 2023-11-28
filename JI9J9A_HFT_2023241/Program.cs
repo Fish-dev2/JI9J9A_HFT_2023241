@@ -55,6 +55,10 @@ namespace JI9J9A_HFT_2023241.Client
                             Console.WriteLine("Date in yyyy.mm.dd. format: ");
                             data = DateTime.Parse(Console.ReadLine());
                             break;
+                        case "licencetype":
+                            Console.WriteLine("Options to choose from are : SelfDefense[0], Hunting[1], Security[2]");
+                            data = (LicenceType)int.Parse(Console.ReadLine());
+                            break;
                         default:
                             data = Console.ReadLine();
                             break;
@@ -186,9 +190,11 @@ namespace JI9J9A_HFT_2023241.Client
         {
             rest = new RestService("http://localhost:27031/", "firearm");
 
-            //var obj = rest.GetSingle<IEnumerable<Ammo>>("stat");
 
             
+
+
+
             var ammoSubMenu = new ConsoleMenu(args, 1)
                 .Add("Read", () => Read("Ammo"))
                 .Add("List", () => List("Ammo"))
@@ -218,18 +224,19 @@ namespace JI9J9A_HFT_2023241.Client
                 .Add("Update", () => Update("Firearm"))
                 .Add("Exit", ConsoleMenu.Close);
             var statsSubMenu = new ConsoleMenu(args, 1)
-                .Add("Average Amount of Guns", () => Stat("avg"))
-                .Add("Amount of each licence given out", () => Stat("licences"))
-                .Add("Expired licences", () => Stat("expired"))
-                .Add("Firearms and Licence types", () => Stat("flt"))
-                .Add("Top 3 most used ammo types", () => Stat("top3"))
-                .Add("List firearms using specified ammo: ", () => Stat("specammo"));
-                ;
+                .Add("Average Amount of Guns", () => Stat("AverageAmountOfGuns"))
+                .Add("Amount of each licence given out", () => Stat("AmountOfEachLicenceGivenOut"))
+                .Add("Expired licences", () => Stat("ExpiredLicences"))
+                .Add("Firearms and Licence types", () => Stat("FirearmsAndLicenceTypes"))
+                .Add("Top 3 most used ammo types", () => Stat("Top3MostUsedAmmoTypes"))
+                .Add("List firearms using specified ammo", () => Stat("FirearmsUsingSpecifiedAmmo"))
+                .Add("Exit", ConsoleMenu.Close);
             var menu = new ConsoleMenu(args, 0)
                 .Add("Ammos", () => ammoSubMenu.Show())
                 .Add("Owners", () => ownerSubMenu.Show())
                 .Add("Registers", () => registerSubMenu.Show())
                 .Add("Firearms", () => firearmSubMenu.Show())
+                .Add("Stats", () => statsSubMenu.Show())
                 .Add("Exit", ConsoleMenu.Close);
 
 
@@ -239,34 +246,75 @@ namespace JI9J9A_HFT_2023241.Client
 
         private static void Stat(string input)
         {
-            if (input == "avg")
+            string link = $"Stat/{input}";
+            if (input == "AverageAmountOfGuns")
             {
-                //rest.GetSingle("stat");
+                var value = rest.GetSingle<double>(link);
+                Console.WriteLine("Average amount of guns per owner: "+ string.Format("{0:0.00}",value));
             }
-            else if (input =="licences")
+            else if (input == "AmountOfEachLicenceGivenOut")
             {
+                var value = rest.GetSingle<IEnumerable<LicenceInfo>>(link);
+                foreach (var item in value)
+                {
+                    Console.WriteLine(item.LicenceType+ ": " + item.Count);
+                }
 
             }
-            else if (input == "expired")
+            else if (input == "ExpiredLicences")
             {
-
+                var owners = rest.GetSingle<IEnumerable<Owner>>(link);
+                Console.WriteLine("People with expired licences: ");
+                foreach (var item in owners)
+                {
+                    Console.WriteLine($"[{item.OwnerId}] {item.FirstName} {item.LastName}");
+                }
             }
-            else if (input == "flt")
+            else if (input == "FirearmsAndLicenceTypes")
             {
-
+                var value = rest.GetSingle<IEnumerable<LicenceStat>>(link);
+                Console.WriteLine("Firearms and the type of licences people own the guns with:");
+                foreach (var item in value)
+                {
+                    Console.WriteLine(item.Firearm+ ":");
+                    foreach (var counts in item.licenceCounts)
+                    {
+                        Console.WriteLine("\t"+counts.Type + ": " + counts.Count);
+                    }
+                }
             }
-            else if (input == "top3")
+            else if (input == "Top3MostUsedAmmoTypes")
             {
-
+                var value = rest.GetSingle<IEnumerable<Ammo>>(link);
+                Console.WriteLine("Top 3 most used ammo types:");
+                foreach (var item in value)
+                {
+                    ShowItem(item);
+                    Console.WriteLine();
+                }
             }
-            else if (input == "specammo")
+            else if (input == "FirearmsUsingSpecifiedAmmo")
             {
-
+                Console.WriteLine("Input the ID of an ammo to get the firearms using that ammo:");
+                int id = int.Parse(Console.ReadLine());
+                Console.WriteLine("Ammo type: ");
+                Ammo ammo = rest.Get<Ammo>(id, "Ammo");
+                ShowItem(ammo);
+                Console.WriteLine();
+                Console.WriteLine("Firearms using specified ammo:");
+                var value = rest.Get<IEnumerable<Firearm>>(id,link);
+                foreach (var item in value)
+                {
+                    ShowItem(item);
+                    Console.WriteLine();
+                }
             }
             else
             {
                 throw new ArgumentException("No such menu point exists " + input);
             }
+            Console.WriteLine("Press anything to continue.");
+            Console.ReadKey();
         }
 
         static void ShowHeaders(object item)

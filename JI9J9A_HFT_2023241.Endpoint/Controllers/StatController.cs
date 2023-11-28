@@ -47,7 +47,7 @@ namespace JI9J9A_HFT_2023241.Endpoint.Controllers
         
         //REGISTER
         [HttpGet]
-        public IEnumerable<RegisterLogic.LicenceStat> FirearmsAndLicenceTypes()
+        public IEnumerable<LicenceStat> FirearmsAndLicenceTypes()
         {
             return this.registerLogic.FirearmsAndLicenceTypes();
         }
@@ -63,7 +63,6 @@ namespace JI9J9A_HFT_2023241.Endpoint.Controllers
         [HttpGet("{id}")]
         public IEnumerable<Firearm> FirearmsUsingSpecifiedAmmo(int id)
         {
-
             return this.firearmLogic.FirearmsUsingSpecifiedAmmo(this.ammoLogic.Read(id));
         }
         
