@@ -15,9 +15,8 @@ namespace JI9J9A_HFT_2023241.Models
         public int FirearmId { get; set; }
         public int OwnerId { get; set; }
         public DateTime RegistrationDate { get; set; }
-        [JsonIgnore]
         public virtual Firearm Firearm { get; set; }
-
+        [JsonIgnore]
         public virtual Owner Owner { get; set; }
         public Register()
         {

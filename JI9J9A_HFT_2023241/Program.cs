@@ -186,6 +186,8 @@ namespace JI9J9A_HFT_2023241.Client
         {
             rest = new RestService("http://localhost:27031/", "firearm");
 
+            //var obj = rest.GetSingle<IEnumerable<Ammo>>("stat");
+
             
             var ammoSubMenu = new ConsoleMenu(args, 1)
                 .Add("Read", () => Read("Ammo"))
@@ -215,6 +217,14 @@ namespace JI9J9A_HFT_2023241.Client
                 .Add("Delete", () => Delete("Firearm"))
                 .Add("Update", () => Update("Firearm"))
                 .Add("Exit", ConsoleMenu.Close);
+            var statsSubMenu = new ConsoleMenu(args, 1)
+                .Add("Average Amount of Guns", () => Stat("avg"))
+                .Add("Amount of each licence given out", () => Stat("licences"))
+                .Add("Expired licences", () => Stat("expired"))
+                .Add("Firearms and Licence types", () => Stat("flt"))
+                .Add("Top 3 most used ammo types", () => Stat("top3"))
+                .Add("List firearms using specified ammo: ", () => Stat("specammo"));
+                ;
             var menu = new ConsoleMenu(args, 0)
                 .Add("Ammos", () => ammoSubMenu.Show())
                 .Add("Owners", () => ownerSubMenu.Show())
@@ -223,7 +233,40 @@ namespace JI9J9A_HFT_2023241.Client
                 .Add("Exit", ConsoleMenu.Close);
 
 
+
             menu.Show();
+        }
+
+        private static void Stat(string input)
+        {
+            if (input == "avg")
+            {
+                //rest.GetSingle("stat");
+            }
+            else if (input =="licences")
+            {
+
+            }
+            else if (input == "expired")
+            {
+
+            }
+            else if (input == "flt")
+            {
+
+            }
+            else if (input == "top3")
+            {
+
+            }
+            else if (input == "specammo")
+            {
+
+            }
+            else
+            {
+                throw new ArgumentException("No such menu point exists " + input);
+            }
         }
 
         static void ShowHeaders(object item)
