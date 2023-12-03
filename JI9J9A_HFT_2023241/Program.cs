@@ -8,6 +8,7 @@ using System.Linq;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ConsoleTools;
+using System.Text;
 
 namespace JI9J9A_HFT_2023241.Client
 {
@@ -35,39 +36,19 @@ namespace JI9J9A_HFT_2023241.Client
                     break;
             }
 
-
-            foreach (var prop in item.GetType().GetProperties())
+            try
             {
-                if (!Attribute.IsDefined(prop, typeof(KeyAttribute)) && prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
-                {
-                    Console.WriteLine("Input " + entity.ToLower() + "'s " + prop.Name.ToLower());
-                    object data = "";
-
-                    switch (prop.PropertyType.Name.ToLower())
-                    {
-                        case "int32":
-                            data = int.Parse(Console.ReadLine());
-                            break;
-                        case "double":
-                            data = double.Parse(Console.ReadLine().Replace('.', ','));
-                            break;
-                        case "datetime":
-                            Console.WriteLine("Date in yyyy.mm.dd. format: ");
-                            data = DateTime.Parse(Console.ReadLine());
-                            break;
-                        case "licencetype":
-                            Console.WriteLine("Options to choose from are : SelfDefense[0], Hunting[1], Security[2]");
-                            data = (LicenceType)int.Parse(Console.ReadLine());
-                            break;
-                        default:
-                            data = Console.ReadLine();
-                            break;
-                    }
-
-                    prop.SetValue(item, data);
-                }
+                item = CreateItem(item, entity);
+                rest.Post(item, entity.ToLower());
             }
-            rest.Post(item,entity.ToLower());
+            catch (Exception ex)
+            {
+                Console.WriteLine("Operation failed.");
+                Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine("Press anything to continue.");
+                Console.ReadLine();
+            }
+
             
         }
         static void List(string entity)
@@ -100,91 +81,106 @@ namespace JI9J9A_HFT_2023241.Client
             object item = "";
             object olditem = "";
             Console.WriteLine("Enter " + entity + "'s ID to update:");
-            int id = int.Parse(Console.ReadLine());
-            switch (entity)
-            {
-                case "Ammo":
-                    item = rest.Get<Ammo>(id, entity.ToLower());
-                    ListItem<Ammo>(entity, id);
-                    break;
-                case "Firearm":
-                    item =  rest.Get<Firearm>(id, entity.ToLower());
-                    ListItem<Firearm>(entity, id);
-                    break;
-                case "Owner":
-                    item = rest.Get<Owner>(id, entity.ToLower());
-                    ListItem<Owner>(entity, id);
-                    break;
-                case "Register":
-                    item = rest.Get<Register>(id, entity.ToLower());
-                    ListItem<Register>(entity, id);
-                    break;
-                default:
-                    break;
-            }
-            Console.WriteLine();
 
-            foreach (var prop in item.GetType().GetProperties())
+
+
+            try
             {
-                if (!Attribute.IsDefined(prop, typeof(KeyAttribute)) && prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                int id = int.Parse(Console.ReadLine());
+                switch (entity)
                 {
-                    Console.WriteLine("Input new " + entity.ToLower() + "'s " + prop.Name.ToLower());
-                    object data = "";
-
-                    switch (prop.PropertyType.Name.ToLower())
-                    {
-                        case "int32":
-                            data = int.Parse(Console.ReadLine());
-                            break;
-                        case "double":
-                            data = double.Parse(Console.ReadLine().Replace('.', ','));
-                            break;
-                        case "datetime":
-                            Console.WriteLine("Date in yyyy.mm.dd. format: ");
-                            data = DateTime.Parse(Console.ReadLine());
-                            break;
-                        case "licencetype":
-                            Console.WriteLine("Options to choose from are : SelfDefense[0], Hunting[1], Security[2]");
-                            data = (LicenceType)int.Parse(Console.ReadLine());
-                            break;
-                        default:
-                            data = Console.ReadLine();
-                            break;
-                    }
-
-                    prop.SetValue(item, data);
+                    case "Ammo":
+                        item = rest.Get<Ammo>(id, entity.ToLower());
+                        ListItem<Ammo>(entity, id);
+                        break;
+                    case "Firearm":
+                        item = rest.Get<Firearm>(id, entity.ToLower());
+                        ListItem<Firearm>(entity, id);
+                        break;
+                    case "Owner":
+                        item = rest.Get<Owner>(id, entity.ToLower());
+                        ListItem<Owner>(entity, id);
+                        break;
+                    case "Register":
+                        item = rest.Get<Register>(id, entity.ToLower());
+                        ListItem<Register>(entity, id);
+                        break;
+                    default:
+                        break;
                 }
+                Console.WriteLine();
+                item = CreateItem(item, entity);
+                rest.Put(item, entity.ToLower());
             }
-            rest.Put(item, entity.ToLower());
+            catch (Exception ex)
+            {
+                Console.WriteLine("Operation failed.");
+                Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine("Press anything to continue.");
+                Console.ReadLine();
+            }
+
+
         }
-        static void Delete(string entity)
+        static void Delete<T>(string entity)
         {
             Console.WriteLine($"Enter {entity}'s id to delete:");
-            int id = int.Parse(Console.ReadLine());
-            rest.Delete(id,entity.ToLower());
+
+
+            try
+            {
+                int id = int.Parse(Console.ReadLine());
+                var item = rest.Get<T>(id, entity.ToLower());
+                rest.Delete(id, entity.ToLower());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Operation failed.");
+                Console.WriteLine("Error: "+ ex.Message);
+                Console.WriteLine("Press anything to continue.");
+                Console.ReadLine();
+            }
+
+
+
+
         }
         static void Read(string entity)
         {
             Console.WriteLine("Input " + entity.ToLower() + "'s id you want to read: ");
-            int input = int.Parse(Console.ReadLine());
-            if (entity == "Ammo")
+            try
             {
-                ListItem<Ammo>(entity, input);
+                int input = int.Parse(Console.ReadLine());
+
+                if (entity == "Ammo")
+                {
+                    ListItem<Ammo>(entity, input);
+                }
+                else if (entity == "Firearm")
+                {
+                    ListItem<Firearm>(entity, input);
+                }
+                else if (entity == "Owner")
+                {
+                    ListItem<Owner>(entity, input);
+                }
+                else if (entity == "Register")
+                {
+                    ListItem<Register>(entity, input);
+                }
+                Console.WriteLine("Press anything to continue.");
+                Console.ReadKey();
             }
-            else if (entity == "Firearm")
+            catch (Exception ex)
             {
-                ListItem<Firearm>(entity, input);
+                Console.WriteLine("Operation failed.");
+                Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine("Press anything to continue.");
+                Console.ReadLine();
+
+                throw;
             }
-            else if (entity == "Owner")
-            {
-                ListItem<Owner>(entity, input);
-            }
-            else if (entity == "Register")
-            {
-                ListItem<Register>(entity,input);
-            }
-            Console.WriteLine("Press anything to continue.");
-            Console.ReadKey();
+
         }
         static void Main(string[] args)
         {
@@ -199,28 +195,28 @@ namespace JI9J9A_HFT_2023241.Client
                 .Add("Read", () => Read("Ammo"))
                 .Add("List", () => List("Ammo"))
                 .Add("Create", () => Create("Ammo"))
-                .Add("Delete", () => Delete("Ammo"))
+                .Add("Delete", () => Delete<Ammo>("Ammo"))
                 .Add("Update", () => Update("Ammo"))
                 .Add("Exit", ConsoleMenu.Close);
             var ownerSubMenu = new ConsoleMenu(args, 1)
                 .Add("Read", () => Read("Owner"))
                 .Add("List", () => List("Owner"))
                 .Add("Create", () => Create("Owner"))
-                .Add("Delete", () => Delete("Owner"))
+                .Add("Delete", () => Delete<Owner>("Owner"))
                 .Add("Update", () => Update("Owner"))
                 .Add("Exit", ConsoleMenu.Close);
             var registerSubMenu = new ConsoleMenu(args, 1)
                 .Add("Read", () => Read("Register"))
                 .Add("List", () => List("Register"))
                 .Add("Create", () => Create("Register"))
-                .Add("Delete", () => Delete("Register"))
+                .Add("Delete", () => Delete<Register>("Register"))
                 .Add("Update", () => Update("Register"))
                 .Add("Exit", ConsoleMenu.Close);
             var firearmSubMenu = new ConsoleMenu(args, 1)
                 .Add("Read", () => Read("Firearm"))
                 .Add("List", () => List("Firearm"))
                 .Add("Create", () => Create("Firearm"))
-                .Add("Delete", () => Delete("Firearm"))
+                .Add("Delete", () => Delete<Firearm>("Firearm"))
                 .Add("Update", () => Update("Firearm"))
                 .Add("Exit", ConsoleMenu.Close);
             var statsSubMenu = new ConsoleMenu(args, 1)
@@ -295,18 +291,15 @@ namespace JI9J9A_HFT_2023241.Client
             }
             else if (input == "FirearmsUsingSpecifiedAmmo")
             {
-                Console.WriteLine("Input the ID of an ammo to get the firearms using that ammo:");
-                int id = int.Parse(Console.ReadLine());
-                Console.WriteLine("Ammo type: ");
-                Ammo ammo = rest.Get<Ammo>(id, "Ammo");
-                ShowItem(ammo);
-                Console.WriteLine();
-                Console.WriteLine("Firearms using specified ammo:");
-                var value = rest.Get<IEnumerable<Firearm>>(id,link);
-                foreach (var item in value)
+                try
                 {
-                    ShowItem(item);
-                    Console.WriteLine();
+                    FirearmsUsingAmmo(link);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Operation failed.");
+                    Console.WriteLine("Error: " + ex.Message);
+                    Console.ReadLine();
                 }
             }
             else
@@ -315,6 +308,23 @@ namespace JI9J9A_HFT_2023241.Client
             }
             Console.WriteLine("Press anything to continue.");
             Console.ReadKey();
+        }
+
+        private static void FirearmsUsingAmmo(string link)
+        {
+            Console.WriteLine("Input the ID of an ammo to get the firearms using that ammo:");
+            int id = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ammo type: ");
+            Ammo ammo = rest.Get<Ammo>(id, "Ammo");
+            ShowItem(ammo);
+            Console.WriteLine();
+            Console.WriteLine("Firearms using specified ammo:");
+            var value = rest.Get<IEnumerable<Firearm>>(id, link);
+            foreach (var item in value)
+            {
+                ShowItem(item);
+                Console.WriteLine();
+            }
         }
 
         static void ShowHeaders(object item)
@@ -364,16 +374,62 @@ namespace JI9J9A_HFT_2023241.Client
         }
         static void ListItem<T>(string entity, int id)
         {
-            T item = rest.Get<T>(id,entity.ToLower());
+            try
+            {
+                T item = rest.Get<T>(id, entity.ToLower());
+                foreach (var prop in item.GetType().GetProperties())
+                {
+                    if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                    {
+                        Console.Write("[" + prop.Name + "]: " + prop.GetValue(item).ToString());
+                        Console.WriteLine();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Operation failed.");
+                Console.WriteLine("Error: " + ex.Message);
+                Console.ReadLine();
+            }
+
+
+
+        }
+        static T CreateItem<T>(T item, string entity)
+        {
 
             foreach (var prop in item.GetType().GetProperties())
             {
-                if (prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
+                if (!Attribute.IsDefined(prop, typeof(KeyAttribute)) && prop.GetAccessors().FirstOrDefault(t => t.IsVirtual) == null)
                 {
-                    Console.Write("["+prop.Name + "]: " + prop.GetValue(item).ToString());
-                    Console.WriteLine();
+                    Console.WriteLine("Input " + entity.ToLower() + "'s " + prop.Name.ToLower());
+                    object data = "";
+
+                    switch (prop.PropertyType.Name.ToLower())
+                    {
+                        case "int32":
+                            data = int.Parse(Console.ReadLine());
+                            break;
+                        case "double":
+                            data = double.Parse(Console.ReadLine().Replace('.', ','));
+                            break;
+                        case "datetime":
+                            Console.WriteLine("Date in yyyy.mm.dd. format: ");
+                            data = DateTime.Parse(Console.ReadLine());
+                            break;
+                        case "licencetype":
+                            Console.WriteLine("Options to choose from are : SelfDefense[0], Hunting[1], Security[2]");
+                            data = (LicenceType)int.Parse(Console.ReadLine());
+                            break;
+                        default:
+                            data = Console.ReadLine();
+                            break;
+                    }
+                    prop.SetValue(item, data);
                 }
             }
+            return item;
         }
     }
 }

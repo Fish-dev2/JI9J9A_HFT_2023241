@@ -35,7 +35,7 @@ namespace JI9J9A_HFT_2023241.Endpoint.Controllers
             return this.ownerLogic.ExpiredLicences();
         }
         [HttpGet]
-        public double? AverageAmountOfGuns()
+        public  double? AverageAmountOfGuns()
         {
             return this.ownerLogic.AverageAmountOfGuns();
         }
