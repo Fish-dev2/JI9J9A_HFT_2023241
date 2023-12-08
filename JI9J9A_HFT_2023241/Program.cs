@@ -9,6 +9,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ConsoleTools;
 using System.Text;
+using System.Reflection.Metadata;
 
 namespace JI9J9A_HFT_2023241.Client
 {
@@ -187,7 +188,8 @@ namespace JI9J9A_HFT_2023241.Client
             rest = new RestService("http://localhost:27031/", "firearm");
 
 
-            
+
+
 
 
 
@@ -309,6 +311,7 @@ namespace JI9J9A_HFT_2023241.Client
             Console.WriteLine("Press anything to continue.");
             Console.ReadKey();
         }
+        
 
         private static void FirearmsUsingAmmo(string link)
         {

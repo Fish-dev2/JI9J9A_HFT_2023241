@@ -39,7 +39,7 @@ namespace JI9J9A_HFT_2023241.Test
             mockRegisterRepo.Setup(m => m.ReadAll()).Returns(list.AsQueryable());
             mockRegisterRepo.Setup(m => m.Read(It.IsAny<int>()))
                 .Returns((int id) => list.FirstOrDefault(register => register.Id == id));
-            logic = new RegisterLogic(mockRegisterRepo.Object);
+
             mockRegisterRepo.Setup(m => m.Delete(It.IsAny<int>()))
                 .Callback<int>(id =>
                 {
@@ -55,21 +55,21 @@ namespace JI9J9A_HFT_2023241.Test
                     list.Add(item);
                 });
 
-
+            logic = new RegisterLogic(mockRegisterRepo.Object);
         }
 
         [Test]
         public void FirearmsAndLicenceTypesTester()
         {
             var result = logic.FirearmsAndLicenceTypes();
-            var expected = new List<RegisterLogic.LicenceStat>()
+            var expected = new List<LicenceStat>()
             {
-                new RegisterLogic.LicenceStat()
+                new LicenceStat()
                 {
                     Firearm = "AK-47",
-                    licenceCounts = new List<RegisterLogic.LicenceStat.LicenceCount>()
+                    licenceCounts = new List<LicenceStat.LicenceCount>()
                     {
-                        new RegisterLogic.LicenceStat.LicenceCount()
+                        new LicenceStat.LicenceCount()
                         {
                             Count = 2,
                             Type = LicenceType.Hunting
