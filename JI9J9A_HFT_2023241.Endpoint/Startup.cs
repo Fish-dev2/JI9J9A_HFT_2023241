@@ -1,3 +1,4 @@
+using JI9J9A_HFT_2023241.Endpoint.Services;
 using JI9J9A_HFT_2023241.Logic;
 using JI9J9A_HFT_2023241.Models;
 using JI9J9A_HFT_2023241.Repository;
@@ -42,6 +43,7 @@ namespace JI9J9A_HFT_2023241.Endpoint
             services.AddTransient<IFirearmLogic, FirearmLogic>();
             services.AddTransient<IAmmoLogic, AmmoLogic>();
 
+            services.AddSignalR();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -76,6 +78,7 @@ namespace JI9J9A_HFT_2023241.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }

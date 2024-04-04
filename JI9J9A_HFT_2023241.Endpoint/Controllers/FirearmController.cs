@@ -1,6 +1,9 @@
-﻿using JI9J9A_HFT_2023241.Logic;
+﻿using JI9J9A_HFT_2023241.Endpoint.Services;
+using JI9J9A_HFT_2023241.Logic;
 using JI9J9A_HFT_2023241.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,10 +15,11 @@ namespace JI9J9A_HFT_2023241.Endpoint.Controllers
     public class FirearmController : ControllerBase
     {
         IFirearmLogic logic;
-
-        public FirearmController(IFirearmLogic logic)
+        IHubContext<SignalRHub> hub;
+        public FirearmController(IFirearmLogic logic, IHubContext<SignalRHub> hub)
         {
             this.logic = logic;
+            this.hub = hub;
         }
 
         // GET: api/<FirearmController>
@@ -37,6 +41,7 @@ namespace JI9J9A_HFT_2023241.Endpoint.Controllers
         public void Create([FromBody] Firearm value)
         {
             this.logic.Create(value);
+            this.hub.Clients.All.SendAsync("FirearmCreated", value);
         }
 
         // PUT api/<FirearmController>/5
@@ -44,13 +49,16 @@ namespace JI9J9A_HFT_2023241.Endpoint.Controllers
         public void Update([FromBody] Firearm value)
         {
             this.logic.Update(value);
+            this.hub.Clients.All.SendAsync("FirearmUpdated", value);
         }
 
         // DELETE api/<FirearmController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var firearmToDelete = this.logic.Read(id);
             this.logic.Delete(id);
+            this.hub.Clients.All.SendAsync("FirearmDeleted", firearmToDelete);
         }
     }
 }

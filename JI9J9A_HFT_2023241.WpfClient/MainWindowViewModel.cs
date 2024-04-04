@@ -60,7 +60,7 @@ namespace JI9J9A_HFT_2023241.WpfClient
             {
                 return;
             }
-            Firearms = new RestCollection<Firearm>("http://localhost:27031/", "firearm");
+            Firearms = new RestCollection<Firearm>("http://localhost:27031/", "firearm", "hub");
 
             CreateFirearmCommand = new RelayCommand(() =>
             {
