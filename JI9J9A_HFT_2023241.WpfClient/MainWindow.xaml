@@ -11,28 +11,34 @@
     </Window.DataContext>
     <StackPanel>
         <Label HorizontalContentAlignment="Center" Content="FirearmDB management system" Margin="30" FontSize="40" FontFamily="Consolas" Background="LightPink"/>
-        <Button Margin="250,10" Background="White" Command="{Binding OpenFirearmCommand}">
+        <Button Margin="250,5" Background="White" Command="{Binding OpenFirearmCommand}">
             <WrapPanel>
                 <Label FontFamily="Courier New" FontSize="20" Content="Firearms" Margin="30,5" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
                 <Image Source="images/pistol.png" Stretch="Uniform" Width="30"/> 
             </WrapPanel>
         </Button>
-        <Button Margin="250,10" Background="White">
+        <Button Margin="250,5" Background="White"  Command="{Binding OpenOwnerCommand}">
             <WrapPanel>
                 <Label FontFamily="Courier New" FontSize="20" Content="Owners" Margin="30,5" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
                 <Image Source="images/user.png" Stretch="Uniform" Width="30"/> 
             </WrapPanel>
         </Button>
-        <Button Margin="250,10" Background="White">
+        <Button Margin="250,5" Background="White"  Command="{Binding OpenAmmoCommand}">
             <WrapPanel>
                 <Label FontFamily="Courier New" FontSize="20" Content="Ammos" Margin="30,5" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
                 <Image Source="images/bullets.png" Stretch="Uniform" Width="30"/> 
             </WrapPanel>
         </Button>
-        <Button Margin="250,10" Background="White">
+        <Button Margin="250,5" Background="White"  Command="{Binding OpenRegisterCommand}">
             <WrapPanel>
                 <Label FontFamily="Courier New" FontSize="20" Content="Registers" Margin="30,5" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
                 <Image Source="images/folder.png" Stretch="Uniform" Width="30"/> 
+            </WrapPanel>
+        </Button>
+        <Button Margin="250,5" Background="White">
+            <WrapPanel>
+                <Label FontFamily="Courier New" FontSize="20" Content="Statistics" Margin="30,5" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Image Source="images/bar-chart.png" Stretch="Uniform" Width="30"/> 
             </WrapPanel>
         </Button>
     </StackPanel>

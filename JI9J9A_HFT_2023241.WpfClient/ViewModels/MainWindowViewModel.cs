@@ -1,4 +1,5 @@
-﻿using Microsoft.Toolkit.Mvvm.Input;
+﻿using JI9J9A_HFT_2023241.WpfClient.Windows;
+using Microsoft.Toolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,9 @@ namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
     {
 
         public ICommand OpenFirearmCommand { get; set; }
+        public ICommand OpenAmmoCommand { get; set; }
+        public ICommand OpenOwnerCommand { get; set; }
+        public ICommand OpenRegisterCommand { get; set; }
         public MainWindowViewModel() 
         {
             OpenFirearmCommand = new RelayCommand(() =>
@@ -19,6 +23,12 @@ namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
                 FirearmWindow fw = new FirearmWindow();
                 fw.Show();
             });
+            OpenOwnerCommand = new RelayCommand(() =>
+            {
+                OwnerWindow ow = new OwnerWindow();
+                ow.Show();
+            });
+            
         }
     }
 }

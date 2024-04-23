@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace JI9J9A_HFT_2023241.WpfClient
+namespace JI9J9A_HFT_2023241.WpfClient.Windows
 {
     /// <summary>
     /// Interaction logic for FirearmWindow.xaml
