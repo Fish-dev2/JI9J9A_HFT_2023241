@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\bullets.png" />
+    <None Remove="Images\folder.png" />
+    <None Remove="Images\gun.png" />
+    <None Remove="Images\user.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\JI9J9A_HFT_2023241.Models\JI9J9A_HFT_2023241.Models.csproj" />
   </ItemGroup>
 
@@ -15,5 +22,12 @@
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.2" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\bullets.png" />
+    <Resource Include="Images\folder.png" />
+    <Resource Include="Images\gun.png" />
+    <Resource Include="Images\user.png" />
   </ItemGroup>
 </Project>

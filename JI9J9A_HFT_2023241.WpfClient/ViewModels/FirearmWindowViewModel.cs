@@ -1,18 +1,13 @@
 ﻿using JI9J9A_HFT_2023241.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace JI9J9A_HFT_2023241.WpfClient
+namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
 {
-    public class MainWindowViewModel : ObservableRecipient
+    public class FirearmWindowViewModel : ObservableRecipient
     {
         public RestCollection<Firearm> Firearms { get; set; }
         private Firearm selectedFirearm;
@@ -20,7 +15,7 @@ namespace JI9J9A_HFT_2023241.WpfClient
         public Firearm SelectedFirearm
         {
             get { return selectedFirearm; }
-            set 
+            set
             {
                 if (value == null)
                 {
@@ -42,6 +37,8 @@ namespace JI9J9A_HFT_2023241.WpfClient
                 (DeleteFirearmCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
+
+
         public static bool IsIndesignMode
         {
             get
@@ -54,13 +51,18 @@ namespace JI9J9A_HFT_2023241.WpfClient
         public ICommand CreateFirearmCommand { get; set; }
         public ICommand DeleteFirearmCommand { get; set; }
         public ICommand UpdateFirearmCommand { get; set; }
-        public MainWindowViewModel()
+
+
+
+        public FirearmWindowViewModel()
         {
             if (IsIndesignMode)
             {
                 return;
             }
-            Firearms = new RestCollection<Firearm>("http://localhost:27031/", "firearm", "hub");
+            string server = "http://localhost:27031/";
+
+            Firearms = new RestCollection<Firearm>(server, "firearm", "hub");
 
             CreateFirearmCommand = new RelayCommand(() =>
             {
@@ -70,12 +72,10 @@ namespace JI9J9A_HFT_2023241.WpfClient
                     FireRate = SelectedFirearm.FireRate
                 });
             });
-
             UpdateFirearmCommand = new RelayCommand(() =>
             {
                 Firearms.Update(SelectedFirearm);
             });
-
             DeleteFirearmCommand = new RelayCommand(() =>
             {
                 Firearms.Delete(SelectedFirearm.GunId);
@@ -84,6 +84,8 @@ namespace JI9J9A_HFT_2023241.WpfClient
             {
                 return SelectedFirearm != null;
             });
+
+
             SelectedFirearm = new Firearm();
 
         }

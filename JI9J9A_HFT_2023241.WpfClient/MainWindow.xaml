@@ -3,32 +3,38 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:JI9J9A_HFT_2023241.WpfClient"
+        xmlns:local="clr-namespace:JI9J9A_HFT_2023241.WpfClient.ViewModels"
         mc:Ignorable="d"
         Title="Firearm Editor" Height="450" Width="800">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding Firearms}" SelectedItem="{Binding SelectedFirearm}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Label Content="{Binding Name}"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <StackPanel Grid.Column="1">
-            <Label Content="Name" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedFirearm.Name}" Padding="10"/>
-            <Label Content="Fire rate" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedFirearm.FireRate}" Padding="10" Margin="0,0,0,30"/>
-            <Button Content="Create Firearm" Command="{Binding CreateFirearmCommand}" Margin="10" Padding="10"/>
-            <Button Content="Delete Firearm" Command="{Binding DeleteFirearmCommand}" Margin="10" Padding="10"/>
-            <Button Content="Update Firearm" Command="{Binding UpdateFirearmCommand}" Margin="10" Padding="10"/>
-        </StackPanel>
-    </Grid>
+    <StackPanel>
+        <Label HorizontalContentAlignment="Center" Content="FirearmDB management system" Margin="30" FontSize="40" FontFamily="Consolas" Background="LightPink"/>
+        <Button Margin="250,10" Background="White" Command="{Binding OpenFirearmCommand}">
+            <WrapPanel>
+                <Label FontFamily="Courier New" FontSize="20" Content="Firearms" Margin="30,5" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Image Source="images/pistol.png" Stretch="Uniform" Width="30"/> 
+            </WrapPanel>
+        </Button>
+        <Button Margin="250,10" Background="White">
+            <WrapPanel>
+                <Label FontFamily="Courier New" FontSize="20" Content="Owners" Margin="30,5" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Image Source="images/user.png" Stretch="Uniform" Width="30"/> 
+            </WrapPanel>
+        </Button>
+        <Button Margin="250,10" Background="White">
+            <WrapPanel>
+                <Label FontFamily="Courier New" FontSize="20" Content="Ammos" Margin="30,5" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Image Source="images/bullets.png" Stretch="Uniform" Width="30"/> 
+            </WrapPanel>
+        </Button>
+        <Button Margin="250,10" Background="White">
+            <WrapPanel>
+                <Label FontFamily="Courier New" FontSize="20" Content="Registers" Margin="30,5" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Image Source="images/folder.png" Stretch="Uniform" Width="30"/> 
+            </WrapPanel>
+        </Button>
+    </StackPanel>
+
 </Window>
