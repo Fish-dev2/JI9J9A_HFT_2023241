@@ -67,6 +67,7 @@ namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
             {
                 Ammos.Add(new Ammo()
                 {
+                    Name = SelectedAmmo.Name,
                     Diameter = SelectedAmmo.Diameter,
                     Length = SelectedAmmo.Length,
                 });

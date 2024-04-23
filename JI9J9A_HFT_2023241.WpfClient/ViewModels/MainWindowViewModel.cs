@@ -28,6 +28,11 @@ namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
                 OwnerWindow ow = new OwnerWindow();
                 ow.Show();
             });
+            OpenAmmoCommand = new RelayCommand(() =>
+            {
+                AmmoWindow mw = new AmmoWindow();
+                mw.Show();
+            });
             
         }
     }

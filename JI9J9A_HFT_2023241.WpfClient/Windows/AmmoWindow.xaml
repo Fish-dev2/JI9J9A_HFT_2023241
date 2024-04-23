@@ -1,0 +1,36 @@
+﻿<Window x:Class="JI9J9A_HFT_2023241.WpfClient.Windows.AmmoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JI9J9A_HFT_2023241.WpfClient.ViewModels"
+        mc:Ignorable="d"
+        Title="AmmoWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:AmmoWindowViewModel/>
+    </Window.DataContext>
+    <Grid Tag="Firearms">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding Ammos}" SelectedItem="{Binding SelectedAmmo}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="1">
+            <Label Content="Name" Background="LightBlue" Padding="10"/>
+            <TextBox Text="{Binding SelectedAmmo.Name}" Padding="10"/>
+            <Label Content="Diameter" Background="LightBlue" Padding="10"/>
+            <TextBox Text="{Binding SelectedAmmo.Diameter}" Padding="10"/>
+            <Label Content="Length" Background="LightBlue" Padding="10"/>
+            <TextBox Text="{Binding SelectedAmmo.Length}" Padding="10" Margin="0,0,0,30"/>
+            <Button Content="Create Ammo" Command="{Binding CreateAmmoCommand}" Margin="10" Padding="10"/>
+            <Button Content="Delete Ammo" Command="{Binding DeleteAmmoCommand}" Margin="10" Padding="10"/>
+            <Button Content="Update Ammo" Command="{Binding UpdateAmmoCommand}" Margin="10" Padding="10"/>
+        </StackPanel>
+    </Grid>
+</Window>
