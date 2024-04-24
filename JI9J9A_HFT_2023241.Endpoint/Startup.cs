@@ -70,6 +70,11 @@ namespace JI9J9A_HFT_2023241.Endpoint
                 var response = new { Msg = exception.Message };
                 await context.Response.WriteAsJsonAsync(response);
             }));
+            app.UseCors(x => x
+                .AllowCredentials()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithOrigins("http://localhost:52541"));
 
             app.UseRouting();
 

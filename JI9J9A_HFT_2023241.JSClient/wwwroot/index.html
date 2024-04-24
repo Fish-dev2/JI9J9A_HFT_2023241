@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Actor UI</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Owner Catalog</h1>
+
+    <div id="formdiv" class="form-container">
+        <label for="first-name" class="form-label">First Name:</label>
+        <input type="text" id="first-name" class="form-input" placeholder="Enter your first name">
+
+        <label for="last-name" class="form-label">Last Name:</label>
+        <input type="text" id="last-name" class="form-input" placeholder="Enter your last name">
+
+        <label for="validity" class="form-label">Validity:</label>
+        <input type="date" id="validity" class="form-input">
+
+        <label for="licence-type" class="form-label">Licence Type:</label>
+        <select id="licence-type" class="form-input">
+            <option value="0">Self Defense</option>
+            <option value="1">Hunting</option>
+            <option value="2">Security</option>
+        </select>
+
+        <button type="button" class="submit-btn" onclick="create()">Submit</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Licence Valid Until</th>
+                <th>Licence Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

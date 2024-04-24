@@ -1,0 +1,115 @@
+﻿/* Body style */
+body {
+    background-color: #f0f0f0; /* Light gray background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for the header */
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px; /* Add some space between header and table */
+}
+
+/* Center the h1 */
+h1 {
+    text-align: center;
+}
+
+/* Style for the table */
+.table-container {
+    margin: 0 auto; /* Center the table */
+    width: 80%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    table th, table td {
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    table td {
+        text-align: center;
+    }
+
+    /* Style for even rows */
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    /* Hover effect */
+    table tr:hover {
+        background-color: lightblue; /* Change background color to gold on hover */
+    }
+
+/* Style for the form container */
+.form-container {
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for form labels */
+.form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Style for form inputs */
+.form-input {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style for the submit button */
+
+button[type="button"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    button[type="button"]:hover {
+        background-color: #0056b3;
+    }
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    /* Style for the submit button on hover */
+    .submit-btn:hover {
+        background-color: #0056b3;
+    }
