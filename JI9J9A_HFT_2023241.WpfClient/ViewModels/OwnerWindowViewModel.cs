@@ -73,6 +73,8 @@ namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
                 {
                     FirstName = SelectedOwner.FirstName,
                     LastName = SelectedOwner.LastName,
+                    LicenceType = SelectedOwner.LicenceType,
+                    LicenceValidUntil = SelectedOwner.LicenceValidUntil,
                 });
             });
             UpdateOwnerCommand = new RelayCommand(() =>
@@ -88,7 +90,10 @@ namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
                 return SelectedOwner != null;
             });
 
-            SelectedOwner = new Owner();
+            SelectedOwner = new Owner()
+            {
+                LicenceValidUntil = DateTime.Now,
+            };
 
         }
     }

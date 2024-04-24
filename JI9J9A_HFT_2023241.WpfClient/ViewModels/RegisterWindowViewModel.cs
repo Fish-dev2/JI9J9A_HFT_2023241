@@ -1,6 +1,7 @@
 ﻿using JI9J9A_HFT_2023241.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
@@ -65,6 +66,8 @@ namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
                 {
                     OwnerId = SelectedRegister.OwnerId,
                     FirearmId = SelectedRegister.FirearmId,
+                    RegistrationDate = SelectedRegister.RegistrationDate,
+                    
                 });
             });
             UpdateRegisterCommand = new RelayCommand(() =>
@@ -81,7 +84,10 @@ namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
                 return SelectedRegister != null;
             });
 
-            SelectedRegister = new Register();
+            SelectedRegister = new Register()
+            {
+                RegistrationDate = DateTime.Now,
+            };
 
         }
     }

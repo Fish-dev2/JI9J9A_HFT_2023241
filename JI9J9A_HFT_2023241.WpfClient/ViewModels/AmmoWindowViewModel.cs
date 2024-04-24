@@ -70,6 +70,7 @@ namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
                     Name = SelectedAmmo.Name,
                     Diameter = SelectedAmmo.Diameter,
                     Length = SelectedAmmo.Length,
+                    BulletType = SelectedAmmo.BulletType,
                 });
             });
             UpdateAmmoCommand = new RelayCommand(() =>

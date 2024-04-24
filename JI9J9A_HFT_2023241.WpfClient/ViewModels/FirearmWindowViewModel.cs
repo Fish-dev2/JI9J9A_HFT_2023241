@@ -1,6 +1,7 @@
 ﻿using JI9J9A_HFT_2023241.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
@@ -69,7 +70,11 @@ namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
                 Firearms.Add(new Firearm()
                 {
                     Name = SelectedFirearm.Name,
-                    FireRate = SelectedFirearm.FireRate
+                    FireRate = SelectedFirearm.FireRate,
+                    AmmoId = SelectedFirearm.AmmoId,
+                    Manufacturer = SelectedFirearm.Manufacturer,
+                    ReleaseDate = SelectedFirearm.ReleaseDate
+                    
                 });
             });
             UpdateFirearmCommand = new RelayCommand(() =>
@@ -86,7 +91,11 @@ namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
             });
 
 
-            SelectedFirearm = new Firearm();
+            SelectedFirearm = new Firearm()
+            {
+                ReleaseDate = DateTime.Now,
+            }
+                ;
 
         }
     }
