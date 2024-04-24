@@ -9,7 +9,7 @@
     <Window.DataContext>
         <local:OwnerWindowViewModel/>
     </Window.DataContext>
-    <Grid Tag="Firearms">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -25,13 +25,25 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="First name" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedOwner.FirstName}" Padding="10"/>
-            <Label Content="Last name" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedOwner.LastName}" Padding="10" Margin="0,0,0,30"/>
-            <Button Content="Create Owner" Command="{Binding CreateOwnerCommand}" Margin="10" Padding="10"/>
-            <Button Content="Delete Owner" Command="{Binding DeleteOwnerCommand}" Margin="10" Padding="10"/>
-            <Button Content="Update Owner" Command="{Binding UpdateOwnerCommand}" Margin="10" Padding="10"/>
+            <UniformGrid Columns="2" Margin="0,0,0,30">
+                <Label Content="First name" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding SelectedOwner.FirstName}" Padding="10"/>
+                <Label Content="Last name" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding SelectedOwner.LastName}" Padding="10"/>
+                <Label Content="Licence valid until" Background="LightBlue" Padding="10"/>
+                <DatePicker SelectedDate="{Binding SelectedOwner.LicenceValidUntil}" Padding="10"/>
+                <Label Content="Licence Type" Background="LightBlue" Padding="10"/>
+                <ComboBox 
+                    ItemsSource="{x:Static local:OwnerWindowViewModel.LicenceValues}"
+                    SelectedItem="{Binding SelectedOwner.LicenceType}"
+                    Padding="10"/>
+            </UniformGrid>
+            <UniformGrid Columns="3">
+                <Button Content="Create Owner" Command="{Binding CreateOwnerCommand}" Margin="10" Padding="10"/>
+                <Button Content="Delete Owner" Command="{Binding DeleteOwnerCommand}" Margin="10" Padding="10"/>
+                <Button Content="Update Owner" Command="{Binding UpdateOwnerCommand}" Margin="10" Padding="10"/>
+            </UniformGrid>
+            
         </StackPanel>
     </Grid>
 </Window>

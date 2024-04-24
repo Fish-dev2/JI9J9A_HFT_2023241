@@ -1,14 +1,22 @@
 ﻿using JI9J9A_HFT_2023241.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using System.Collections.Generic;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using System.Linq;
 
 namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
 {
     public class OwnerWindowViewModel : ObservableRecipient
     {
+        public static IEnumerable<LicenceType> LicenceValues
+        {
+            get { return Enum.GetValues(typeof(LicenceType)).Cast<LicenceType>(); }
+        }
+
         public RestCollection<Owner> Owners { get; set; }
 
         private Owner selectedOwner;

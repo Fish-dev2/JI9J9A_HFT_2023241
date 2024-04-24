@@ -9,7 +9,7 @@
     <Window.DataContext>
         <local:AmmoWindowViewModel/>
     </Window.DataContext>
-    <Grid Tag="Firearms">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -22,15 +22,21 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="Name" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedAmmo.Name}" Padding="10"/>
-            <Label Content="Diameter" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedAmmo.Diameter}" Padding="10"/>
-            <Label Content="Length" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedAmmo.Length}" Padding="10" Margin="0,0,0,30"/>
-            <Button Content="Create Ammo" Command="{Binding CreateAmmoCommand}" Margin="10" Padding="10"/>
-            <Button Content="Delete Ammo" Command="{Binding DeleteAmmoCommand}" Margin="10" Padding="10"/>
-            <Button Content="Update Ammo" Command="{Binding UpdateAmmoCommand}" Margin="10" Padding="10"/>
+            <UniformGrid Columns="2" Margin="0,0,0,30">
+                <Label Content="Name" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding SelectedAmmo.Name}" Padding="10"/>
+                <Label Content="Diameter" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding SelectedAmmo.Diameter}" Padding="10"/>
+                <Label Content="Length" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding SelectedAmmo.Length}" Padding="10"/>
+                <Label Content="Bullet Type" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding SelectedAmmo.BulletType}" Padding="10"/>
+            </UniformGrid>
+            <UniformGrid Columns="3">
+                <Button Content="Create Ammo" Command="{Binding CreateAmmoCommand}" Margin="10" Padding="10"/>
+                <Button Content="Delete Ammo" Command="{Binding DeleteAmmoCommand}" Margin="10" Padding="10"/>
+                <Button Content="Update Ammo" Command="{Binding UpdateAmmoCommand}" Margin="10" Padding="10"/>
+            </UniformGrid>
         </StackPanel>
     </Grid>
 </Window>
