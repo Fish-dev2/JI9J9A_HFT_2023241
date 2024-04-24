@@ -18,7 +18,7 @@ body {
 }
 
 /* Center the h1 */
-h1 {
+h1, h2 {
     text-align: center;
 }
 
@@ -93,6 +93,7 @@ button[type="button"] {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 5px;
 }
 
     button[type="button"]:hover {
@@ -113,3 +114,8 @@ button[type="button"] {
     .submit-btn:hover {
         background-color: #0056b3;
     }
+
+.hidden {
+    display: none;
+
+}

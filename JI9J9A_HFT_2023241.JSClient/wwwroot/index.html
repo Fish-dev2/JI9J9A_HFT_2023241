@@ -9,6 +9,7 @@
     <h1>Owner Catalog</h1>
 
     <div id="formdiv" class="form-container">
+        <h2>Create new owner</h2>
         <label for="first-name" class="form-label">First Name:</label>
         <input type="text" id="first-name" class="form-input" placeholder="Enter your first name">
 
@@ -27,6 +28,29 @@
 
         <button type="button" class="submit-btn" onclick="create()">Submit</button>
     </div>
+    
+    <div id="updateformdiv" class="form-container hidden reveal">
+        <h2>Update owner</h2>
+        <label for="first-name" class="form-label">First Name:</label>
+        <input type="text" id="first-name-update" class="form-input" placeholder="Enter your first name">
+
+        <label for="last-name" class="form-label">Last Name:</label>
+        <input type="text" id="last-name-update" class="form-input" placeholder="Enter your last name">
+
+        <label for="validity" class="form-label">Validity:</label>
+        <input type="date" id="validity-update" class="form-input">
+
+        <label for="licence-type" class="form-label">Licence Type:</label>
+        <select id="licence-type-update" class="form-input">
+            <option value="0">Self Defense</option>
+            <option value="1">Hunting</option>
+            <option value="2">Security</option>
+        </select>
+
+        <button type="button" class="submit-btn" onclick="update()">Update Actor</button>
+    </div>
+
+
 
     <table>
         <thead>
