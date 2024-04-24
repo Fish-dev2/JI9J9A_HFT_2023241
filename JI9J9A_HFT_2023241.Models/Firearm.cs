@@ -50,7 +50,7 @@ namespace JI9J9A_HFT_2023241.Models
             {
                 return false;
             }
-            return f.Name == this.Name && f.Manufacturer == this.Manufacturer && f.FireRate == this.FireRate && f.ReleaseDate == this.ReleaseDate && f.AmmoType.Equals(this.AmmoType);
+            return f.Name == this.Name && f.Manufacturer == this.Manufacturer && f.FireRate == this.FireRate && f.ReleaseDate == this.ReleaseDate && f.AmmoId == this.AmmoId;
         }
         public override int GetHashCode()
         {

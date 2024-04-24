@@ -11,6 +11,7 @@ namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
     {
         public RestCollection<Register> Registers { get; set; }
 
+
         private Register selectedRegister;
 
         public Register SelectedRegister

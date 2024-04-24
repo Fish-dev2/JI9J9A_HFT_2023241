@@ -28,9 +28,8 @@ namespace JI9J9A_HFT_2023241.Models
         public string LastName { get; set; }
         public DateTime LicenceValidUntil { get; set; }
         public LicenceType LicenceType { get; set; }
-        [JsonIgnore]
         public virtual ICollection<Firearm> LicensedGuns { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<Register> Registers { get; set; }
 
         public Owner()
