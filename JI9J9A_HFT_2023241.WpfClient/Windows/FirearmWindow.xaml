@@ -22,13 +22,26 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="Name" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedFirearm.Name}" Padding="10"/>
-            <Label Content="Fire rate" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedFirearm.FireRate}" Padding="10" Margin="0,0,0,30"/>
-            <Button Content="Create Firearm" Command="{Binding CreateFirearmCommand}" Margin="10" Padding="10"/>
-            <Button Content="Delete Firearm" Command="{Binding DeleteFirearmCommand}" Margin="10" Padding="10"/>
-            <Button Content="Update Firearm" Command="{Binding UpdateFirearmCommand}" Margin="10" Padding="10"/>
+            <UniformGrid Columns="2">
+                <Label Content="Name" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding SelectedFirearm.Name}" Padding="10"/>
+                <Label Content="Manufacturer" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding SelectedFirearm.Manufacturer}" Padding="10"/>
+                <Label Content="Fire rate" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding SelectedFirearm.FireRate}" Padding="10"/>
+                <Label Content="Release Date" Background="LightBlue" Padding="10"/>
+                <DatePicker SelectedDate="{Binding SelectedFirearm.ReleaseDate}" Padding="10"/>
+                <Label Content="Ammo Id" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding SelectedFirearm.AmmoId}" Padding="10"/>
+                <Label Content="Ammo Type" Background="LightBlue" Padding="10"/>
+                <TextBox IsEnabled="False" Text="{Binding SelectedFirearm.AmmoType.Name}" Padding="10"/>
+            </UniformGrid>
+            <UniformGrid Columns="3">
+                <Button Content="Create Firearm" Command="{Binding CreateFirearmCommand}" Margin="10" Padding="10"/>
+                <Button Content="Delete Firearm" Command="{Binding DeleteFirearmCommand}" Margin="10" Padding="10"/>
+                <Button Content="Update Firearm" Command="{Binding UpdateFirearmCommand}" Margin="10" Padding="10"/>
+            </UniformGrid>
+
         </StackPanel>
     </Grid>
 </Window>
