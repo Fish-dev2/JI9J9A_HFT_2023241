@@ -16,6 +16,7 @@ namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
         public ICommand OpenAmmoCommand { get; set; }
         public ICommand OpenOwnerCommand { get; set; }
         public ICommand OpenRegisterCommand { get; set; }
+        public ICommand OpenStatCommand { get; set; }
         public MainWindowViewModel() 
         {
             OpenFirearmCommand = new RelayCommand(() =>
@@ -37,6 +38,11 @@ namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
             {
                 RegisterWindow rw = new RegisterWindow();
                 rw.Show();
+            });
+            OpenStatCommand = new RelayCommand(() =>
+            {
+                StatWindow sw = new StatWindow();
+                sw.Show();
             });
             
         }

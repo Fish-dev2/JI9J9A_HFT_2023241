@@ -13,6 +13,98 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Label Content="Average number of guns/person" Background="LightBlue" Padding="10"/>
+            <TextBox IsEnabled="False" Text="{Binding AvgAmountOfGuns}" Padding="10" />
+            <Label Content="Amount of Each Licence" Background="LightBlue" Padding="10"/>
+            <ListBox ItemsSource="{Binding LicenceInfos}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Label Content="{Binding LicenceType}" ContentStringFormat="Type: {0}"/>
+                            <Label Content="{Binding Count}" ContentStringFormat="amount: {0}"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Label Content="Top 3 Ammo Types" Background="LightBlue" Padding="10"/>
+            <ListBox ItemsSource="{Binding Top3MostUsedAmmoTypes}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Label Content="{Binding AmmoId}" ContentStringFormat="Id: [{0}]"/>
+                            <Label Content="{Binding Name}" ContentStringFormat="Name: {0}"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Label Content="Expired Licences" Background="LightBlue" Padding="10"/>
+            <ListBox Grid.Column="0" Grid.Row="1" ItemsSource="{Binding ExpiredLicences}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Label Content="{Binding FirstName}" ContentStringFormat="Name: {0}"/>
+                            <Label Content="{Binding LastName}"/>
+                            <Label Content="{Binding LicenceValidUntil}" ContentStringFormat="Expired: {0:yyyy-MM-dd}"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <Label Content="Licence Stats" Background="LightBlue" Padding="10"/>
+            <ListBox MaxHeight="200" Grid.Column="0" Grid.Row="1" ItemsSource="{Binding LicenceStats}" SelectedItem="{Binding SelectedStat}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Label Content="{Binding Firearm}"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Label Content="Licences For This Firearm" Background="LightBlue" Padding="10"/>
+            <ListBox Grid.Column="0" Grid.Row="1" ItemsSource="{Binding SelectedStat.licenceCounts}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Label Content="{Binding Type}" ContentStringFormat="Type: {0}"/>
+                            <Label Content="{Binding Count}" ContentStringFormat="Amount: {0}"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Grid.Column="3">
+            <Label Content="Guns With Specific Ammo" Background="LightBlue" Padding="10"/>
+            <ComboBox SelectedIndex="0" ItemsSource="{Binding Ammos}" SelectedItem="{Binding SelectedAmmo}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Label Content="{Binding AmmoId}" ContentStringFormat="[{0}]"/>
+                            <Label Content="{Binding Name}"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ListBox Grid.Column="0" Grid.Row="1" ItemsSource="{Binding FirearmsUsingAmmo}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Label Content="{Binding Manufacturer}" ContentStringFormat=" {0}:"/>
+                            <Label Content="{Binding Name}"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
     </Grid>
 </Window>

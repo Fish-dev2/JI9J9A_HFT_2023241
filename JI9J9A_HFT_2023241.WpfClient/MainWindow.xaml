@@ -35,7 +35,7 @@
                 <Image Source="images/folder.png" Stretch="Uniform" Width="30"/> 
             </WrapPanel>
         </Button>
-        <Button Margin="250,5" Background="White">
+        <Button Margin="250,5" Background="White" Command="{Binding OpenStatCommand}">
             <WrapPanel>
                 <Label FontFamily="Courier New" FontSize="20" Content="Statistics" Margin="30,5" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
                 <Image Source="images/bar-chart.png" Stretch="Uniform" Width="30"/> 
