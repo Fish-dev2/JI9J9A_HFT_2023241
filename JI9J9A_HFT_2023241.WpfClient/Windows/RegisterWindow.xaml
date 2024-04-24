@@ -9,7 +9,7 @@
     <Window.DataContext>
         <local:RegisterWindowViewModel/>
     </Window.DataContext>
-    <Grid Tag="Firearms">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -26,13 +26,27 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="Owner ID" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedRegister.OwnerId}" Padding="10"/>
-            <Label Content="Firearm ID" Background="LightBlue" Padding="10"/>
-            <TextBox Text="{Binding SelectedRegister.FirearmId}" Padding="10" Margin="0,0,0,30"/>
-            <Button Content="Create Register" Command="{Binding CreateRegisterCommand}" Margin="10" Padding="10"/>
-            <Button Content="Delete Register" Command="{Binding DeleteRegisterCommand}" Margin="10" Padding="10"/>
-            <Button Content="Update Register" Command="{Binding UpdateRegisterCommand}" Margin="10" Padding="10"/>
+            <UniformGrid Columns="2" Margin="0,0,0,30">
+                <Label Content="Owner ID" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding SelectedRegister.OwnerId}" Padding="10" />
+                <Label Content="Owner Name" Background="LightBlue" Padding="10"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{Binding SelectedRegister.Owner.FirstName}" Padding="10" />
+                    <Label Content="{Binding SelectedRegister.Owner.LastName}" Padding="10" />
+                </StackPanel>
+                <Label Content="Firearm ID" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding SelectedRegister.FirearmId}" Padding="10"/>
+                <Label Content="Firearm Name" Background="LightBlue" Padding="10"/>
+                <Label Content="{Binding SelectedRegister.Firearm.Name}" Padding="10"/>
+                <Label Content="Registration Date" Background="LightBlue" Padding="10"/>
+                <DatePicker SelectedDate="{Binding SelectedRegister.RegistrationDate}" Padding="10"/>
+
+            </UniformGrid>
+            <UniformGrid Columns="3">
+                <Button Content="Create Register" Command="{Binding CreateRegisterCommand}" Margin="10" Padding="10"/>
+                <Button Content="Delete Register" Command="{Binding DeleteRegisterCommand}" Margin="10" Padding="10"/>
+                <Button Content="Update Register" Command="{Binding UpdateRegisterCommand}" Margin="10" Padding="10"/>
+            </UniformGrid>
         </StackPanel>
     </Grid>
 </Window>

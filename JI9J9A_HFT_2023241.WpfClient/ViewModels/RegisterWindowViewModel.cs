@@ -73,7 +73,8 @@ namespace JI9J9A_HFT_2023241.WpfClient.ViewModels
             });
             DeleteRegisterCommand = new RelayCommand(() =>
             {
-                Registers.Delete(SelectedRegister.OwnerId);
+                Registers.Delete(SelectedRegister.Id
+                    );
             },
             () =>
             {
