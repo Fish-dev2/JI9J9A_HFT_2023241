@@ -54,7 +54,7 @@ namespace JI9J9A_HFT_2023241.Logic
         }
         public IEnumerable<LicenceStat> FirearmsAndLicenceTypes()
         {
-            var result2 = (from x in this.repository.ReadAll().AsEnumerable()
+            var result2 = (from x in this.repository.ReadAll().Where(t=> t.Firearm!=null && t.Owner != null).AsEnumerable()
                           group x by x.Firearm.Name into grouped
                           select new LicenceStat
                           {

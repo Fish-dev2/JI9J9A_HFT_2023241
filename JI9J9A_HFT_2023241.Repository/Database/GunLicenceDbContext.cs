@@ -32,6 +32,8 @@ namespace JI9J9A_HFT_2023241.Repository
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+
             modelBuilder.Entity<Firearm>(
                 fa => fa.HasOne(fa => fa.AmmoType)
                 .WithMany(ammo => ammo.FirearmsUsingAmmo)
@@ -60,6 +62,9 @@ namespace JI9J9A_HFT_2023241.Repository
                 .WithMany(f => f.Registers)
                 .HasForeignKey(r => r.FirearmId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+
+
 
 
             modelBuilder.Entity<Ammo>().HasData(new Ammo[]
