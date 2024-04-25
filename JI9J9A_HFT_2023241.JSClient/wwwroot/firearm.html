@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Firearm UI</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Firearm Catalog</h1>
+
+    <div id="formdiv" class="form-container">
+        <h2>Create new firearm</h2>
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" id="name" class="form-input" placeholder="Enter firearm's name'">
+
+        <label for="manufacturer" class="form-label">Manufacturer</label>
+        <input type="text" id="manufacturer" class="form-input" placeholder="Enter firearm's manufacturer'">
+
+        <label for="firerate" class="form-label">Fire rate:</label>
+        <input type="number" id="firerate" class="form-input" />
+
+        <label for="release-date" class="form-label">Release Date:</label>
+        <input type="date" id="release-date" class="form-input">
+
+        <label for="ammo-type" class="form-label">Ammo type:</label>
+        <select id="ammo-type" class="form-input">
+        </select>
+
+        <button type="button" class="submit-btn" onclick="create()">Submit</button>
+    </div>
+
+    <div id="updateformdiv" class="form-container hidden reveal">
+        <h2>Update firearm</h2>
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" id="name-update" class="form-input" placeholder="Enter firearm's name'">
+
+        <label for="manufacturer" class="form-label">Manufacturer</label>
+        <input type="text" id="manufacturer-update" class="form-input" placeholder="Enter firearm's manufacturer'">
+
+        <label for="firerate" class="form-label">Fire rate:</label>
+        <input type="number" id="firerate-update" class="form-input" />
+
+        <label for="release-date" class="form-label">Release Date:</label>
+        <input type="date" id="release-date-update" class="form-input">
+
+        <label for="ammo-type" class="form-label">Ammo type:</label>
+        <select id="ammo-type-update" class="form-input">
+
+        </select>
+
+
+        <button type="button" class="submit-btn" onclick="update()">Update firearm</button>
+    </div>
+
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Manufacturer</th>
+                <th>Firerate</th>
+                <th>Release date</th>
+                <th>Ammo Id</th>
+                <th>Ammo Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="firearmscript.js"></script>
+</body>
+</html>
