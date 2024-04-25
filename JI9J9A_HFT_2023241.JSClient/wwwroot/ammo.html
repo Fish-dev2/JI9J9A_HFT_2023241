@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Ammo UI</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Ammo Catalog</h1>
+
+    <div id="formdiv" class="form-container">
+        <h2>Create new firearm</h2>
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" id="name" class="form-input" placeholder="Enter ammo's name">
+
+        <label for="diameter" class="form-label">Diameter:</label>
+        <input type="number" id="diameter" class="form-input">
+
+        <label for="length" class="form-label">Length:</label>
+        <input type="number" id="length" class="form-input" />
+
+        <label for="bullettype" class="form-label">Bullet type:</label>
+        <input type="text" id="bullettype" class="form-input" placeholder="Enter bullet's type">
+
+
+
+        <button type="button" class="submit-btn" onclick="create()">Submit</button>
+    </div>
+
+    <div id="updateformdiv" class="form-container hidden reveal">
+        <h2>Update ammo</h2>
+        <label for="name" class="form-label">Name:</label>
+        <input type="text" id="name-update" class="form-input" placeholder="Enter ammo's name">
+
+        <label for="diameter" class="form-label">Diameter:</label>
+        <input type="number" id="diameter-update" class="form-input">
+
+        <label for="length" class="form-label">Length:</label>
+        <input type="number" id="length-update" class="form-input" />
+
+        <label for="bullettype" class="form-label">Bullet type:</label>
+        <input type="text" id="bullettype-update" class="form-input" placeholder="Enter bullet's type">
+
+
+
+        <button type="button" class="submit-btn" onclick="update()">Update firearm</button>
+    </div>
+
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Diameter</th>
+                <th>Length</th>
+                <th>Bullet Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="ammoscript.js"></script>
+</body>
+</html>

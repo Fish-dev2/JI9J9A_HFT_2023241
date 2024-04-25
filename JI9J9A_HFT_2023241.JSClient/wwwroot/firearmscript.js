@@ -54,8 +54,8 @@ function display() {
             '<td>' + new Date(t.releaseDate).toDateString() + '</td>' +
             '<td>' + t.ammoId + '</td>' +
             '<td>' + toAmmo(t.ammoId) + '</td>' +
-            `<td><button type="button" onclick="remove(${t.ammoId})">Delete</button>` +
-            `<button type="button" onclick="showupdate(${t.ammoId})">Update</button></td>` +
+            `<td><button type="button" onclick="remove(${t.gunId})">Delete</button>` +
+            `<button type="button" onclick="showupdate(${t.gunId})">Update</button></td>` +
             '</tr>';
     })
 }
@@ -158,6 +158,9 @@ function remove(id) {
 
 function toAmmo(id) {
     let foundAmmo = ammos.find(ammo => ammo.ammoId === id);
+    if (foundAmmo == null) {
+        return "none";
+    }
     return foundAmmo.name;
 }
 function setupSignalR() {
