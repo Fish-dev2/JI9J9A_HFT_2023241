@@ -1,37 +1,33 @@
-﻿let ammos = [];
-let server = 'http://localhost:27031/Ammo/'
+﻿let registers = [];
+let server = 'http://localhost:27031/register/'
 let connection;
 
-let ammoIdToUpdate = -1;
+let regIdToUpdate = -1;
 
 getdata();
-
 setupSignalR();
 
 async function getdata() {
     await fetch(server)
         .then(x => x.json())
         .then(y => {
-            ammos = y;
+            registers = y;
             display();
             console.log(y);
-        })
+        });
 }
 
-
 function display() {
-
     document.getElementById('resultarea').innerHTML = '';
-    ammos.forEach(t => {
+    registers.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
             '<tr>' +
-            '<td>' + t.ammoId + '</td>' +
-            '<td>' + t.name + '</td>' +
-            '<td>' + t.diameter + '</td>' +
-            '<td>' + t.length + '</td>' +
-            '<td>' + t.bulletType + '</td>' +
-            `<td><button type="button" onclick="remove(${t.ammoId})">Delete</button>` +
-            `<button type="button" onclick="showupdate(${t.ammoId})">Update</button></td>` +
+            '<td>' + t.id + '</td>' +
+            '<td>' + t.ownerId + '</td>' +
+            '<td>' + t.firearmId + '</td>' +
+            '<td>' + new Date(t.registrationDate).toDateString() + '</td>' +
+            `<td><button type="button" onclick="remove(${t.id})">Delete</button>` +
+            `<button type="button" onclick="showupdate(${t.id})">Update</button></td>` +
             '</tr>';
     })
 }
@@ -39,33 +35,34 @@ function display() {
 function showupdate(id) {
     let form = document.getElementById('updateformdiv');
     form.classList.toggle('hidden');
-    let ammo = ammos.find(t => t['ammoId'] == id)
-    document.getElementById('name-update').value = ammo['name'];
-    document.getElementById('diameter-update').value = ammo['diameter'];
-    document.getElementById('length-update').value = ammo['length'];
+    let reg = registers.find(t => t['id'] == id)
+    document.getElementById('owner-id-update').value = reg['ownerId'];
+    document.getElementById('firearm-id-update').value = reg['firearmId'];
 
+    //day was off by one????
+    var date = new Date(reg['registrationDate']);
+    var offset = date.getTimezoneOffset() * 60000;
+    var localDate = new Date(date.getTime() - offset);
+    //this fixes it
 
-    
-    document.getElementById('bullettype-update').value = ammo['ammoId'];
+    document.getElementById('registration-date-update').value = localDate.toISOString().split('T')[0];
 
-    ammoIdToUpdate = id;
+    regIdToUpdate = id;
 
 }
 function create() {
-    let name = document.getElementById('name').value;
-    let diameter = Number(document.getElementById('diameter').value);
-    let length = Number(document.getElementById('length').value);
-    let bullettype = document.getElementById('bullettype').value;
+    let ownerid = document.getElementById('owner-id').value;
+    let firearmid = document.getElementById('firearm-id').value;
+    let registrationDate = new Date(document.getElementById('registration-date').value);
 
     fetch(server, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
             {
-                name: name,
-                diameter: diameter,
-                length: length,
-                bulletType: bullettype,
+                ownerId: ownerid,
+                firearmId: firearmid,
+                registrationDate: registrationDate.toISOString(),
             }),
     })
         .then(response => response)
@@ -78,21 +75,19 @@ function create() {
         });
 }
 function update() {
-    let name = document.getElementById('name-update').value;
-    let diameter = Number(document.getElementById('diameter-update').value);
-    let length = Number(document.getElementById('length-update').value);
-    let bullettype = document.getElementById('bullettype-update').value;
+    let ownerid = document.getElementById('owner-id-update').value;
+    let firearmid = document.getElementById('firearm-id-update').value;
+    let registrationDate = new Date(document.getElementById('registration-date-update').value);
 
     fetch(server, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
             {
-                ammoId: ammoIdToUpdate,
-                name: name,
-                diameter: diameter,
-                length: length,
-                bulletType: bullettype,
+                id: regIdToUpdate,
+                ownerId: ownerid,
+                firearmId: firearmid,
+                registrationDate: registrationDate.toISOString(),
             }),
     })
         .then(response => response)
@@ -103,6 +98,7 @@ function update() {
         .catch((error) => {
             console.error('Error:', error);
         });
+
     let form = document.getElementById('updateformdiv');
     form.classList.toggle('hidden');
 }
@@ -122,26 +118,25 @@ function remove(id) {
             console.error('Error:', error);
         });
 }
-
 function setupSignalR() {
     connection = new signalR.HubConnectionBuilder()
         .withUrl("http://localhost:27031/hub/")
         .configureLogging(signalR.LogLevel.Information)
         .build();
     connection.on
-        ('AmmoCreated', (user, message) => {
+        ('RegisterCreated', (user, message) => {
             console.log(user);
             console.log(message);
             getdata();
         });
     connection.on
-        ('AmmoDeleted', (user, message) => {
+        ('RegisterDeleted', (user, message) => {
             console.log(user);
             console.log(message);
             getdata();
         });
     connection.on
-        ('AmmoUpdated', (user, message) => {
+        ('RegisterUpdated', (user, message) => {
             console.log(user);
             console.log(message);
             getdata();

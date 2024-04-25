@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Register UI</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Register Catalog</h1>
+
+    <div id="formdiv" class="form-container">
+        <h2>Create new register</h2>
+        <label for="owner-id" class="form-label">Owner Id:</label>
+        <input type="number" id="owner-id" class="form-input">
+
+        <label for="firearm-id" class="form-label">Firearm Id:</label>
+        <input type="text" id="firearm-id" class="form-input">
+
+        <label for="registration-date" class="form-label">Registration Date:</label>
+        <input type="date" id="registration-date" class="form-input">
+
+
+        <button type="button" class="submit-btn" onclick="create()">Submit</button>
+    </div>
+
+    <div id="updateformdiv" class="form-container hidden reveal">
+        <h2>Update register</h2>
+        <label for="owner-id-update" class="form-label">Owner Id:</label>
+        <input type="number" id="owner-id-update" class="form-input">
+
+        <label for="firearm-id-update" class="form-label">Firearm Id:</label>
+        <input type="text" id="firearm-id-update" class="form-input">
+
+        <label for="registration-date-update" class="form-label">Registration Date:</label>
+        <input type="date" id="registration-date-update" class="form-input">
+
+
+        <button type="button" class="submit-btn" onclick="update()">Update Register</button>
+    </div>
+
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Owner Id</th>
+                <th>Firearm Id</th>
+                <th>Registration Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="registerscript.js"></script>
+</body>
+</html>
